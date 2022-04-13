@@ -1,0 +1,85 @@
+Ch 4: Protocol Buffers Serialization
+
+* Protocol buffers overview:
+
+(i) Originated at google, now used by many companies, mostly for server to server
+
+								communication
+
+(ii) Write schema, using a .proto extension, use compiler called protoc,
+
+	to serialize, deserialize, multiple languages
+
+(iii) Microservice architecture, different services in different language
+
+(iv) Binary format
+
+(v) grpc: protocol buffers over http
+
+(vi) Has a schema
+
+-------------------------------------------------------------------------------------
+
+* Writing the definition file
+
+(i) proto3 because it has evolved over time
+
+-------------------------------------------------------------------------------------
+
+* Generating serializers
+
+(i) using protoc compiler to convert .proto file to .py
+
+(ii) typical of generated code, it's not readable and it's not meant to be
+
+-------------------------------------------------------------------------------------
+
+* Using Protocol Buffers
+
+(i) Writer a message. serialize and deserialize the data
+
+(ii) benchmarked against JSON, message is smaller, and marginally faster
+
+-------------------------------------------------------------------------------------
+
+* gRPC
+
+(i) when serializing data, need a way to pass it along, use gRPC for this
+
+(ii) going to log request, append, run server
+
+(iii) good for internal services that need to talk to each other
+
+-------------------------------------------------------------------------------------
+
+* challenge: trade objects size
+
+(i) dictionary, with timestamp, strings, floats, and boolean
+
+(ii) challenge: write protocol buffer definition file, then encode
+
+-------------------------------------------------------------------------------------
+
+* solution: trade objects size
+
+(i) float in python is a double in protocol buffers
+
+(ii) import generated code, then start from 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

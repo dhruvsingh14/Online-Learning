@@ -1,0 +1,17 @@
+02: Building a Tool with Python
+
+* Exploring the sample tool
+
+(i) Reviewing code. Run linux commands from git bash. 
+
+-------------------------------------------------------------------------------------
+
+* Using shell commands from Python
+
+(i) Can be done, and is very useful
+
+
+
+
+
+

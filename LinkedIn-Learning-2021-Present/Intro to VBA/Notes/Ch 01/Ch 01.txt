@@ -1,0 +1,42 @@
+Ch 1: Understanding Macros and VBA
+
+* What is an excel macro: 
+
+(i) Recorded macros are non deterministic, ie, they can't make decisions on their own
+
+(ii) Macros written in vba can 'take on a life of their own', and make decisions for you
+
+(iii) When writing and testing macros, try to work on a copy of your workbook
+
+(iv) Since there is no undo button with vba
+	
+-------------------------------------------------------------------------------------
+
+* recording your first macro
+
+(i)  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

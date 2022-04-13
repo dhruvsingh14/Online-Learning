@@ -1,0 +1,85 @@
+Ch 6: Unicode
+
+* What's unicode:
+
+(i) Internally computers work with bits and bytes. Everything must be serialized
+
+							in some way
+
+(ii) Unicode: Used for storing strings internally. accomomodates complexity. 
+
+							hexadecimal
+
+(iii) UTF-8 most commonly used
+
+(iv) glyphs: how characters are displayed
+
+-------------------------------------------------------------------------------------
+
+* str and Bytes
+
+(i) Bytes: sequence of bytes, can be a string
+
+(ii length of encoded string increases. must decode to reverse the process
+
+-------------------------------------------------------------------------------------
+
+* Normalization
+
+(i) sometimes though representation may appear same, it may not be because of 
+
+							encoding
+
+(ii) nfc/nfkc normalization format vs. nfd format
+
+-------------------------------------------------------------------------------------
+
+* case-insensitive comparison
+
+(i) can use .lower() method even on greek alphabet. has limitations
+
+(ii) .casefold() method is more generalizable
+
+-------------------------------------------------------------------------------------
+
+* detecting encoding
+
+(i) json by definition is utf-8
+
+(ii) chardet used to guess encoding
+
+(iii) however chardet may be slow, try faster methods
+
+-------------------------------------------------------------------------------------
+
+* Challenge: Counting strings
+
+(i) count the number of unique words
+
+-------------------------------------------------------------------------------------
+
+* Solution: Counting strings
+
+(i) use .strip() to remove white spaces
+
+(ii) use casefold 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

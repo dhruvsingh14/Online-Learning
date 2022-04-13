@@ -1,0 +1,52 @@
+01: Setting Up
+
+* Installing pipenv, Python, Django, Flask, and Django REST framework:
+
+(i) feed and status: small APIs intended to power a microblog, tiny twitter feed. 
+
+(ii) feed uses django, while status uses flask
+
+(iii) use type to describe contents of a directory
+
+(iv) note was not able to install pipenv requests, but it doesn't matter
+
+	because it's not needed for this project
+
+(v) used pipenv to set up environment
+
+-------------------------------------------------------------------------------------
+
+* OWASP Top 10, number 9
+
+(i) Common vulnerabilities and exposures
+
+(ii) Pipenv uses safety
+
+(iii) pipenv check to check for safety
+
+(iv) 'Bandit' is a vulnerability tool that scans your code for security
+
+-------------------------------------------------------------------------------------
+
+* Sidenote: Encryption
+
+(i) Always use HTTPS
+
+(ii) Encrypt sensitive customer data
+
+(iii) Injection: OWASP Top 10, number 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

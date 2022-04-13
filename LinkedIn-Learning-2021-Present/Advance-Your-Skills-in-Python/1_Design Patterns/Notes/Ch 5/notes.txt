@@ -1,0 +1,37 @@
+Ch 5: Best Practices
+
+* Consistency: 
+
+(i) Identical solution used to solve one problem: minimal modification
+
+(ii) Benefits: reduces likelihood of errors
+
+		higher likelihood of spotting errors
+
+(iii) Software architecture: larger scale way of implementing
+
+(iv) example: building an ecommerce website
+
+-------------------------------------------------------------------------------------
+
+* Programmer's mindset
+
+(i) Completeness: How much it meets its requirements
+
+(ii) Correctness: Especially vital in mission critical systems
+
+(iii) Coupling: elements of software that are related, changes in one affect the other
+
+(iv) Cohesion: how independent elements are
+
+(v) Simplicity vs. Generality: tradeoff
+
+			general enough for reusability purposes
+
+			simple enough for user friendliness
+
+-------------------------------------------------------------------------------------
+
+Conclusion: 
+
+(i) Next Steps: advanced design patterns

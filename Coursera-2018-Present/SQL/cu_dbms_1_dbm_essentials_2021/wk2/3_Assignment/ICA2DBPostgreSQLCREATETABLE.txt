@@ -1,0 +1,115 @@
+-- Drop tables if exist
+
+DROP TABLE IF EXISTS Customer cascade;
+DROP TABLE IF EXISTS Employee cascade;
+DROP TABLE IF EXISTS Facility cascade;
+DROP TABLE IF EXISTS Location cascade;
+DROP TABLE IF EXISTS ResourceTbl cascade;
+DROP TABLE IF EXISTS EventRequest cascade;
+DROP TABLE IF EXISTS EventPlan cascade;
+DROP TABLE IF EXISTS EventPlanLine;
+
+
+-------------------- Customer --------------------------------
+
+CREATE TABLE Customer (
+custno varchar(8) not null,
+custname varchar(30) not null,
+address varchar(30) not null,
+Internal char(1) not null,
+contact varchar(30) not null,
+phone char(7) not null,
+city varchar(30) not null,
+state char(2) not null,
+zip char(10) not null,
+CONSTRAINT CustomerPk PRIMARY KEY (CustNo) );
+
+
+-------------------- Employee --------------------------------
+
+CREATE TABLE Employee (
+empno varchar(8) not null,
+empname varchar(30) not null,
+department varchar(30) not null,
+email varchar(30) not null,
+phone char(7) not null,
+CONSTRAINT EmployeePk PRIMARY KEY (EmpNo) );
+
+
+-------------------- Facility --------------------------------
+
+CREATE TABLE Facility(
+facno		varchar(8) not null,
+facname		varchar(50) not null,
+CONSTRAINT FacilityPk PRIMARY KEY (FacNo),
+CONSTRAINT UniqueFacName UNIQUE (FacName) );
+
+
+-------------------- Location --------------------------------
+
+CREATE TABLE Location(
+locno		varchar(8) not null,
+facno		varchar(8) not null,
+locname		varchar(30) not null,
+CONSTRAINT LocationPK PRIMARY KEY (LocNo), 
+CONSTRAINT LocationFK FOREIGN KEY (FacNo) REFERENCES Facility );
+
+
+-------------------- ResourceTbl --------------------------------
+
+CREATE TABLE ResourceTbl(
+resno		varchar(8) not null,
+resname		varchar(30) not null,
+rate		numeric not null,
+CONSTRAINT ResourceTblPK PRIMARY KEY (ResNo),
+CONSTRAINT ValidRate CHECK (rate > 0) );
+
+
+-------------------- EventRequest --------------------------------
+
+CREATE TABLE EventRequest (
+eventno varchar(8) not null,
+dateheld date not null,
+datereq date not null,
+facno varchar(8) not null,
+custno varchar(8) not null,
+dateauth date,
+status varchar(10) not null,
+estcost numeric not null,
+estaudience bigint not null,
+budno varchar(8),
+CONSTRAINT EventRequestPk PRIMARY KEY (EventNo), 
+CONSTRAINT EventRequestFK1 FOREIGN KEY (CustNo) REFERENCES Customer,
+CONSTRAINT EventRequestFK2 FOREIGN KEY (FacNo) REFERENCES Facility,
+CONSTRAINT ValidStatus CHECK (status IN ('Approved', 'Pending', 'Denied')),
+CONSTRAINT ValidAudience CHECK (estaudience > 0) );
+
+
+-------------------- EventPlan --------------------------------
+
+CREATE TABLE EventPlan (
+planno varchar(8) not null,
+eventno varchar(8) not null,
+workdate date not null,
+notes varchar(30),
+activity varchar(30) not null,
+empno varchar(8),
+CONSTRAINT EventPlanPk PRIMARY KEY (PlanNo), 
+CONSTRAINT EventPlanFK1 FOREIGN KEY (EventNo) REFERENCES EventRequest,
+CONSTRAINT EventPlanFK2 FOREIGN KEY (EmpNo) REFERENCES Employee );
+
+
+-------------------- EventPlanLine --------------------------------
+
+CREATE TABLE EventPlanLine (
+PlanNo varchar(8) not null,
+LineNo char(1) not null,
+TimeStart timestamp not null,
+TimeEnd timestamp not null,
+NumberFld numeric not null,
+LocNo varchar(8) not null,
+ResNo varchar(8) not null,
+CONSTRAINT EventPlanLinePk PRIMARY KEY (PlanNo, LineNo), 
+CONSTRAINT EventPlanLineFK1 FOREIGN KEY (LocNo) REFERENCES Location,
+CONSTRAINT EventPlanLineFK2 FOREIGN KEY (ResNo) REFERENCES ResourceTbl,
+CONSTRAINT ValidStartEnd CHECK (TimeStart < TimeEnd) );

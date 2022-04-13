@@ -1,0 +1,55 @@
+Ch 2: Generators as Context Managers
+
+* Overview: 
+
+(i) Control structure, used after "with", setup, yield control, wrap-up
+
+(ii) Steps: Setup (Try); Handoff (Yield); Wrap-Up (Finally)
+
+(iii) Uses decorator. Try keyword has setup code. 
+
+			Yield is once again used to suspend action.
+
+			Finally holds any wrap up code 
+
+-------------------------------------------------------------------------------------
+
+* Build Context manager
+
+(i) Python, recognizing context manager, fills in enter and exit methods
+
+-------------------------------------------------------------------------------------
+
+* Context manager decorator
+
+(i) Removing decorator: raises an attribute error
+
+(ii) w/o decorator, does not have enter and exit methods
+
+(iii) once defined, called using a with statement
+
+-------------------------------------------------------------------------------------
+
+* Use the yielded value
+
+(i) yield statement: flow control device. 
+
+(ii) also, object to the right of yeild, can be called within with statement
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

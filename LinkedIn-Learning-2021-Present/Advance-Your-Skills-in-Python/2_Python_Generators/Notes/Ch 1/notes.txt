@@ -1,0 +1,103 @@
+Ch 1: Generator Functions and Expressions
+
+* Introduction: 
+
+(i) Iterator Uses: Large data sets, memory intensive operations
+
+(ii) Example: dmv ticket printout, needs memory and tracking, sequence etc.
+
+(iii) Iterators: maintain state, lazy evaluation, space efficient
+
+		support next() method, not stored in memory. iter() method
+
+(iv) Generator functions/objects make using iterators easier
+
+	Generators are iterators, but not all iterators are generators
+
+-------------------------------------------------------------------------------------
+
+* Build generator function: 
+
+(i) Use of the keyword yield
+
+(ii) generators yield rather than return
+
+-------------------------------------------------------------------------------------
+
+* Generator expressions: 
+
+(i) More concise than writing a generator function
+
+(ii) Generator object will take any amount of logic you put between its parentheses
+
+	so long as it evaluates to a sequence
+
+(iii) However, too much logic may be better broken into smaller bits to reduce complexity
+
+-------------------------------------------------------------------------------------
+
+* Use a Generator object: 
+
+(i) One method that causes it to yield values: the next method
+
+(ii) If we exceed limit: StopIteration exception. exhausted generator. 
+
+(iii) Next function (no longer a method in python 3), most often called in the context of a loop
+
+(iv) Another way, is to pass a generator function directly into a for loop
+
+(v) Or to pass a generator expression into a for loop. For loop handles StopIteration.
+
+(vi) Can pass generator expression into another function call, just as you would a list
+
+(vii) Generator objects: cannot be reused
+
+-------------------------------------------------------------------------------------
+
+* Challenge: Fibonacci sequence generator
+
+(i) Fibonacci: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...
+
+-------------------------------------------------------------------------------------
+
+* Solution: Fibonacci
+
+(i) Use a shifter approach. Initialize variables. Then shift using other variables.
+
+(ii) Generators good for this because they hold state
+
+-------------------------------------------------------------------------------------
+
+* Generator Pipeline
+
+(i) max: driven by the end of the process rather than the beginning
+
+(ii) .strip(): yields each line one by one, stripping off the new lines
+
+(iii) linking multiple generators together
+
+(iv) pipeline driven by the end of the process rather than the beginning
+
+(v) Several pipes can be linked together into one long pipeline
+
+(vi) Can be packaged into one function
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,76 @@
+Ch 3: Coroutines
+
+* Overview: 
+
+(i) Consumes values
+
+(ii) Receives values, may not return anything, not for iteration
+
+(iii) Built from a generator, but conceptually different
+
+(iv) Design: repeatedly receives input, processes input, stops at yield statement
+
+(v) Coroutine is similar to a fuction. However, it can be changed. 
+
+			Whereas a function stays static. 
+
+(vi) Supports send method
+
+-------------------------------------------------------------------------------------
+
+* Create a coroutine
+
+(i) Recall a coroutine is an object that you give something to, 
+
+						that does something with it
+
+(ii) priming a coroutine
+
+(iii) use generator exit
+
+-------------------------------------------------------------------------------------
+
+* Coroutine decorator
+
+(i) decorator: helps to pre=prime coroutine object
+
+-------------------------------------------------------------------------------------
+
+* Consume values with the send method
+
+(i) Coroutines consume values. Need a producer to send them values they can consume
+
+(ii) Allow us to keep the logic separate and resuable, easy to substitute and add
+
+-------------------------------------------------------------------------------------
+
+* Coroutine pipelines
+
+(i) Similar to generators, these can be used to create data pipelines
+
+(ii) router coroutine in router_pipeline example can receive and send data
+
+(iii) couroutine pipelines are driven by the start of the pipeline
+
+(iv) different directions, different targets
+
+(v) branching, processing and logic
+
+(vi) piecing together modular events
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

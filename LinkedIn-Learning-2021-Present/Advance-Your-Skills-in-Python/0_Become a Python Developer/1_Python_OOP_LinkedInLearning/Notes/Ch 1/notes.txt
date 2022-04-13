@@ -1,0 +1,11 @@
+Ch 1: OOP
+
+(i) __init__ function: initializer (similar to constructor)
+
+(ii) self: in argument, is a naming convention
+
+(iii) _name: naming convention to indicate internal attribute
+
+(iv) instance attribute: belongs to only one object
+
+(v) class method vs. static method

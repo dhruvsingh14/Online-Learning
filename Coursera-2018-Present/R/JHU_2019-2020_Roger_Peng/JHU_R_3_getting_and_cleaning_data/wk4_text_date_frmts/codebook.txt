@@ -1,0 +1,19 @@
+dir: stores directory with data
+
+x: list of directory files
+x_subs: list of relevant files
+
+names_vec: vector w/ names, modified subsequently
+
+mean: character vec, logical using grepl, used to subset
+std: character vec, logical using grepl, used to subset
+
+train_subs: subsetted intermediary dfs
+test_subs: subsetted intermediary dfs
+
+m1: train data set, names cleaned, columns subsetted, matched to activity ids
+m2: test data set, names cleaned, columns subsetted, matched to activity ids
+
+m3: final dataset
+
+x: df with aggregated columns

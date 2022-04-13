@@ -1,0 +1,33 @@
+Ch02: Reading Files
+
+* CSV
+
+(i) pros: easy to export/import from excel
+
+(ii) cons: everything is a string, no standard, hard to work with unicode
+
+(iii) CSV can be compressed alot
+
+(iv) dictionary reader is nice, consumes little, doesn't blow up memory
+
+(v) convert to dictionary, explicility specify type while reading in
+
+(vi) the other way to do this is using pandas
+
+(vii) .csv.bz2 is a compressed file format. fairl common with csv.
+
+(viii) pandas does a great job of guessing types, but not perfect, esp. w/ date columns
+
+(ix) the way to correct for this is to specify parse_dates when calling read_csv
+
+(x) lastly, can specify chunksize option in read_csv to get a text type sub dataframe
+
+---------------------------------------------------------------------------------
+
+* Working in XML
+
+(i) DOM: loading everything into memory, vs. SAX: iterative, can be done in pieces
+
+(ii) ElemenTree, and lxml are two libraries
+
+(iii) since everything in xml is text, we need to convert manually

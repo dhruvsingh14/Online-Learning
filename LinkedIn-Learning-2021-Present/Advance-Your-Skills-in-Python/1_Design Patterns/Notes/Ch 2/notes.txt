@@ -1,0 +1,139 @@
+Ch 2: Creational Patterns
+
+* Factory: 
+
+(i) Factory: is an object, specializing in creating other objects
+
+		factory pattern useful when you don't know what other types of
+		objects to use
+
+(ii) relies on polymorphism
+
+-------------------------------------------------------------------------------------
+
+* Factory example: 
+
+(i) using dogs and cats
+
+-------------------------------------------------------------------------------------
+
+* Abstract factory:
+
+(i) builds on factory pattern
+
+(ii) useful: when user expects family of objects, doesn't know family until runtime
+
+(iii) consists of abstract factory and concrete factory
+
+(iv) concrete factories are often singletons
+
+(v) relies on polymorphism
+
+-------------------------------------------------------------------------------------
+
+* Abstract Factory Example:
+
+(i) combining abstract and concrete factory
+
+(ii) instantiate and call concrete factory
+
+-------------------------------------------------------------------------------------
+
+* Singleton:
+
+(i) Singleton: pattern when you only want to allow one object to be created from a class
+
+(ii) Borg: similar concept. short for cyborg. 
+
+(iii) cache is useful for storing in singleton or borg
+
+(iv) All modules in python act as singletons
+
+-------------------------------------------------------------------------------------
+
+* Singleton example:
+
+(i) used borg to create dictionary
+
+(ii) inherited borg object in singleton
+
+(iii) used singleton to create a dictionary of acronyms
+
+-------------------------------------------------------------------------------------
+
+* Builder
+
+(i) Solution to an anti pattern, called telescoping constructor
+
+(ii) telescoping constructor: excessive number of constructors
+
+(iii) builder: order to chaos, remove unnecessary complexity
+
+(iv) components of builder: 
+
+(iv.1) Director (class), in charge of building the product
+
+(iv.2) Abstract builder - interfaces
+
+(iv.3) Concrete builder - implements the interfaces. inherits from abstract builder. 
+
+(iv.4) Product - object buing built. does not rely on polymorphism.
+
+-------------------------------------------------------------------------------------
+
+* Builder example:
+
+(i) used director class to store all concrete objects
+
+(ii) abstract builder to initialize and create car object
+
+-------------------------------------------------------------------------------------
+
+* Prototype
+
+(i) example, cloning
+
+(ii) when instantiating many objects, expensive, in terms of compute
+
+(iii) carbon copy, instead of building from scratch
+
+(iv.1) Create prototypical instance first
+
+(iv.2) Then clone
+
+-------------------------------------------------------------------------------------
+
+* Prototype example:
+
+(i) Protype class has 4 different methods
+
+(ii) Clone is the most important method
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

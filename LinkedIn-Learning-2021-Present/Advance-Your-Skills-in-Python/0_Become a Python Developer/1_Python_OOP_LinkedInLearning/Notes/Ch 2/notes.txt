@@ -1,0 +1,16 @@
+Ch 2: Inheritance
+
+(i) inheritance: allows subclass to inherit from base class
+
+(ii) multiple inheritance: unique to python, unlike other programming languages
+			allows classes to inherit from multiple base classes
+
+			mixup can be inefficient to the program while executing, used sparingly
+
+(iii) method resolution order: to look up in class, can be checked using .__mro__
+
+(iv) composition: more like a relationship. not wholly unlike inheritance, some overlap is possible
+
+(v) abstract class: blueprint for other classes
+
+(vi) interface: also acts as a blueprint for designing classes, but it differs from abstract class

@@ -1,0 +1,50 @@
+-- Programmer: Dhruv Singh
+-- Date Modified: 06/12/21
+-- Title: Week 4: Quiz
+-- Topic: Modifying and Analyzing Data
+-- DBMS: PostgreSQL
+
+-- Question 1: Concatentation
+SELECT "CustomerId", "FirstName" || ' ' || "LastName" AS "FullName", 
+		"Address", UPPER("City" || ' ' || "Country") AS "CityCountry"
+	FROM "Customers"
+
+-- Question 2: Substring plus concatenation
+SELECT "EmployeeId", "FirstName" || ' ' || "LastName" AS "FullName", 
+		LOWER(SUBSTR("FirstName", 1, 4)) || LOWER(SUBSTR("LastName", 1, 2))
+	FROM "Employees"
+
+-- Question 3: DateTime: 15 years tenure or more
+SELECT "LastName", "HireDate", STRFTIME('%Y', "HireDate") AS "HireYear", 
+		STRFTIME('%Y', 'now') AS "CurrentYear"
+	FROM "Employees"	
+   	WHERE STRFTIME('%Y', 'now') - STRFTIME('%Y', "HireDate") >= 15
+    ORDER BY "LastName"
+
+-- Question 4: Columns containing Nulls
+SELECT "Address", "Phone", "Company", "PostalCode", "Fax", "FirstName"
+	FROM "Customers"
+	WHERE "Address" IS NULL OR
+		"Phone" IS NULL OR
+		"Company" IS NULL OR
+		"PostalCode" IS NULL OR
+		"Fax" IS NULL OR
+		"FirstName" IS NULL
+
+-- Question 5: Customer count by city
+SELECT "City", COUNT(DISTINCT "FirstName") AS "CityDist"
+	FROM "Customer"
+	GROUP BY "City"
+	ORDER BY "CityDist" DESC
+
+-- Question 6: Join 2 tables, plus new id
+SELECT "FirstName" || "LastName" || "InvoiceId" AS "InvoiceIdNew"
+	FROM "Customers", "Invoices"
+	WHERE "Customers"."CustomerId" = "Invoices"."CustomerId"
+	AND "FirstName" || "LastName" = 'AstridGruber'
+	ORDER BY "InvoiceId"
+
+
+
+
+

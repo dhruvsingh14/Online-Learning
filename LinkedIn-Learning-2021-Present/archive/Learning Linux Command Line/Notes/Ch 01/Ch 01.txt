@@ -1,0 +1,9 @@
+Ch 01: Setting up your Environment
+
+* Creating a Linux virtual machine
+
+(i) Ubuntu desktop is user friendly
+
+----------------------------------------------------------------------------------
+
+

@@ -1,0 +1,15 @@
+x = 1, 0
+p(1) = p, p(0) = 1 - p 
+
+E(X) = 1*p + 0 * (1-p) = p
+
+E(X^2) = 1^2 * p + 0^2* (1-p) = p
+
+Var(X) =  E(X^2) - [E(X)]^2 = p - p^2 = p(1-p)
+
+
+** binomial dist in n choose k terms, as factorials and permutations
+
+P(X) = (n choose k) p^x q^(n-x) = (n choose k) p^x (1-p)^(n-x)
+
+

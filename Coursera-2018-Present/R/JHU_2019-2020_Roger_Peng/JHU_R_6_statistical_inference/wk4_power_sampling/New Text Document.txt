@@ -1,0 +1,8 @@
+Hi!
+
+I just reviewed your project, please review mine:
+
+https://www.coursera.org/learn/statistical-inference/peer/3k8j5/statistical-inference-course-project/review/ame_aFDdEeqQGQ520rMwkQ
+
+(note: knitr package blocked by system admin, meant i had to find pdf workaround lol
+so appearance might be different)

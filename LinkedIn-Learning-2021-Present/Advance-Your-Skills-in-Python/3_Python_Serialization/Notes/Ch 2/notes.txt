@@ -1,0 +1,67 @@
+Ch 2: Python specific serialization formats
+
+* Marshal and pickle serialization:
+
+(0) %run: magic to load code into ipython
+
+(i) Pickle: python specific format. can serialize live code, lambda objects, and generators
+
+(ii) Dump and load. Dump to serialize data. And load to deserialize it. 
+
+(iii) wb: write binary, rb: write binary
+
+(iv) you can only serialize one object at a time. 
+
+	to serialize multiple place them in a container. 
+
+(v) for streaming, serialize one by one, dump, flush, then de-serialize one by one
+
+(vi) can also store data for serialization in key value pairs, in a database
+
+-------------------------------------------------------------------------------------
+
+* Serialization with repr
+
+(i) 2 ways to represent objects as strings. Str and repr.
+
+(ii) str for external, repr for variables
+
+(iii) repr: think of it as 'poor man's serialization'. but it is very powerful. 
+
+(iv) data classes are python 3.7 and upwards
+
+-------------------------------------------------------------------------------------
+
+* Eval and exec
+
+(i) Python source code is also serialized
+
+(ii) may not be a nice repr, still the serialization can be the same
+
+(iii) python sometimes uses eval to serialize by default, big security risk
+
+(iv) should only serialize data you trust
+
+-------------------------------------------------------------------------------------
+
+* challenge: repr and read pickle
+
+(i) challenge: add repr, read pickle file
+
+-------------------------------------------------------------------------------------
+
+* solution: repr and read pickle
+
+(i) get the  class name dynamically
+
+(ii) f string formatting to create a class, using 'bang' r, ie !r
+
+(iii) load data: open file in a binary format, do a while true, break and exit
+
+(iv) can also print repr of an object using %r
+
+
+
+
+
+

@@ -1,0 +1,76 @@
+04: Securing a RESTful API
+
+* Safe serializing
+
+(i) OWASP Top 10, #3: sensitive data exposure
+
+(ii) APIs often less observed by people, 
+
+	therefore more susceptible to overexposure of data
+
+(iii) in order to explore api, will create a superuser
+
+(iv) Being looked up by id, should not be so. Not effective serialization.
+
+(v) django rest framework is a great tool for creating rest apis using python
+
+(vi) because it comes with powerful serialization. 
+
+		other such tools are marshmallow
+
+(vii) fields = all means everything gets thrown into model. want to fix this
+
+	change 'all' to a list.
+
+(viii) author still showing id
+
+-------------------------------------------------------------------------------------
+
+* Permissions
+
+(i) Authentication: who the user is. Permissions: what they can see and do. 
+
+(ii) Author should have access to posts, nonauthor should not
+
+(iii) test failed where response is 200 instead of 403
+
+(iv) allow any is not appropriate permission here
+
+(v) switching permission to isauthor only helps pass all tests
+
+-------------------------------------------------------------------------------------
+
+* Testing and Security
+
+(i) Automated Testing: ensures sensitive data not exposed
+
+			lock in security fixes
+
+(ii) pytest gives very clear output as to what went wrong
+
+(iii) here, failed test because we gave it an extra item: id
+
+-------------------------------------------------------------------------------------
+
+* Challenge: Run the test, fix the code
+
+(i) serialization is often what we decide to include and leave off from an endpoint
+
+-------------------------------------------------------------------------------------
+
+* Solution: Run the test, fix the code
+
+(i) After fixing list in serializers, the regression no longer persists. 
+
+	tests passed
+
+
+
+
+
+
+
+
+
+
+

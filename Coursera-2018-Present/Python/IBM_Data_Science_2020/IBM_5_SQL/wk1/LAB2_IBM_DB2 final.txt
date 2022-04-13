@@ -1,0 +1,38 @@
+-- Task 0: dropping instructor table ;
+
+DROP TABLE INSTRUCTOR;
+
+-- Task 1: creating instructor table; 
+CREATE TABLE INSTRUCTOR (
+	ins_id VARCHAR(255),
+	lastname VARCHAR(255),
+	firstname VARCHAR(255),
+	city VARCHAR(255),
+	country CHAR(2)
+);
+
+-- Task 2A: inserting row;
+INSERT INTO INSTRUCTOR (ins_id, lastname, firstname, city, country)
+VALUES ('1', 'Ahuja', 'Rav', 'Toronto', 'CA');
+
+-- Task 2B: inserting two rows at once;
+INSERT INTO INSTRUCTOR (ins_id, lastname, firstname, city, country)
+VALUES ('2', 'Chong', 'Raul', 'Toronto', 'CA'),
+				('3', 'Vasudevan', 'Hima', 'Chicago', 'US');
+
+-- Task 3;
+SELECT *  FROM INSTRUCTOR;
+
+--Task 3B;
+SELECT firstname, lastname, country FROM INSTRUCTOR WHERE city = 'Toronto'; 
+
+--Task 4;
+UPDATE INSTRUCTOR
+SET city = 'Markham'
+WHERE firstname = 'Rav' and lastname = 'Ahuja';
+
+--Task 5;
+DELETE FROM INSTRUCTOR WHERE firstname = 'Raul' and lastname = 'Chong';
+
+--Task 5B;
+SELECT * FROM INSTRUCTOR;

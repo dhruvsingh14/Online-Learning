@@ -1,0 +1,72 @@
+---
+title: "Week 4 Project, Part 1 -- Simulation"
+author: "Dhruv Singh"
+date: "February 13, 2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+## PART 0: SETUP
+echo settings for embedding code
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+library(rmarkdown)
+```
+
+Setting Directory
+```{r dir}
+getwd()
+setwd("C:/Dhruv/misc/data/R_6_statistical_inference/wk4_power_sampling")
+```
+
+
+## PART I: Simulation Exercise
+
+Using starter code to motivate simulation
+```{r random uniforms}
+hist(runif(1000))
+```
+
+1000 avgs of 40 random unifs
+```{r random uniform averages}
+mns = NULL
+for (i in 1 : 1000) mns = c(mns, mean(runif(40)))
+hist(mns)
+```
+
+
+1. Simulating mean:
+```{r mean sim}
+# lambda = 0.2
+
+# mean of one iteration/simulation
+mean(rexp(40,0.2))
+
+# mean of 1000 iterations / simulations
+mean_simulation = NULL
+for (i in 1 : 1000) mean_simulation = c(mean_simulation, mean(rexp(40, 0.2)))
+
+{hist(mean_simulation)
+abline(v=mean(mean_simulation), col = "red")
+abline(v=1/0.2, col = "blue")}
+```
+
+2. Simulating standard deviation:
+```{r standard deviation simulation}
+# lambda = 0.2
+
+# std dev of one iteration/simulation
+sd(rexp(40,0.2))
+
+# std dev of 1000 iterations / simulations
+stdev_simulation = NULL
+for (i in 1 : 1000) stdev_simulation = c(stdev_simulation, sd(rexp(40, 0.2)))
+
+{hist(stdev_simulation)
+abline(v=sd(stdev_simulation), col = "red")
+abline(v=1/0.2, col = "blue")}
+
+# the returned standard deviation from the simulations (~1) is much smaller than the theorized standard deviation (~5)
+```

@@ -1,0 +1,335 @@
+NOTE: This session is executing on the X64_10PRO  platform.
+
+
+
+NOTE: Updated analytical products:
+
+      SAS/STAT 14.3
+      SAS/ETS 14.3
+      SAS/OR 14.3
+      SAS/IML 14.3
+      SAS/QC 14.3
+
+NOTE: Additional host information:
+
+ X64_10PRO WIN 10.0.17763  Workstation
+
+NOTE: SAS initialization used:
+      real time           12.65 seconds
+      cpu time            1.48 seconds
+
+WARNING: One or more libraries specified in the concatenated library SASHELP
+WARNING: do not exist.  These libraries were removed from the concatenation.
+1    /*******************************************************************/
+2    /* Program Name: HW7                                               */
+3    /* Program Location: C:\Users\dsingh\Dropbox\Stat_604\Homework\HW3 */
+4    /* Date Created:  6/20/2019                                        */
+5    /* Author: Dhruv Singh                                             */
+6    /* Purpose:                                                        */
+7
+8    libname hwdata 'C:\Users\dsingh\Dropbox\Tamu\Stat_604\Homework\hwdata';
+NOTE: Libref HWDATA was successfully assigned as follows:
+      Engine:        V9
+      Physical Name: C:\Users\dsingh\Dropbox\Tamu\Stat_604\Homework\hwdata
+9    filename report
+9  ! 'C:\Users\dsingh\Dropbox\Tamu\Stat_604\Homework\HW7_DueJune25\HW7DSingh_HW
+9  ! 07_PCoutput.pdf';
+10
+11   /* step 1: reading in data */
+12
+13   * reading in middle school data;
+14   data mid;
+15       set hwdata.ok_mid;
+16       label Grade7 = "MidGrade7"
+17           Grade8 = "MidGrade8"
+18           Grade9 = "MidGrade9"
+19           Grade10 = "MidGrade10"
+20           Grade11 = "MidGrade11"
+21           Grade12 = "MidGrade12";
+22   run;
+
+NOTE: There were 610 observations read from the data set HWDATA.OK_MID.
+NOTE: The data set WORK.MID has 610 observations and 16 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.21 seconds
+      cpu time            0.06 seconds
+
+
+23
+24   * sorting by merge vars ;
+25   proc sort data = mid;
+26       by mapcity school;
+27   run;
+
+NOTE: There were 610 observations read from the data set WORK.MID.
+NOTE: The data set WORK.MID has 610 observations and 16 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.01 seconds
+
+
+28
+29   * reading in high school data;
+30   data high;
+31       set hwdata.ok_high;
+32       label Grade7 = "HSGrade7"
+33           Grade8 = "HSGrade8"
+34           Grade9 = "HSGrade9"
+35           Grade10 = "HSGrade10"
+36           Grade11 = "HSGrade11"
+37           Grade12 = "HSGrade12";
+38   run;
+
+NOTE: There were 459 observations read from the data set HWDATA.OK_HIGH.
+NOTE: The data set WORK.HIGH has 459 observations and 16 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.03 seconds
+
+
+39   * sorting for merge;
+40   proc sort data = high;
+41       by mapcity school;
+42   run;
+
+NOTE: There were 459 observations read from the data set WORK.HIGH.
+NOTE: The data set WORK.HIGH has 459 observations and 16 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.00 seconds
+
+
+43
+44
+45   /* step 2: merge into 3 data sets */
+46   data matched_schools (drop = Teachers)
+47       high_nomatch(keep = school mapcity mailcity county)
+48       mid_nomatch(keep = school mapcity mailcity county);
+49
+50       * merge step;
+51       merge mid(in=mid rename=(Grade7-Grade12=MidGrade7-MidGRade12
+52                                   PTRatio = MidPTRatio))
+53       high(in=high rename=(Grade7-Grade12=HSGrade7-HSGRade12
+54                                   PTRatio = HSPTRatio));
+55       by mapcity school;
+56       drop Ungraded -- HStotal; *dropping by position;
+57
+58       * step 2a (i) ;
+59       array h{*} hsgrade7-hsgrade12;
+60       array m{*} midgrade7-midgrade12;
+61
+62       * array for sum ;
+63       array grade{*} grade7-grade12;
+64
+65       *step 2a (ii) ;
+66       do i = 1 to 6;
+67           grade{i} = sum(h{i},m{i});
+68       end;
+69
+70       * step 2a (iii) - (iv);
+71       * array for imputing teachers for individual datasets;
+72       array midimptchr{*} midimptchr7-midimptchr12;
+73       array hsimptchr{*} hsimptchr7-hsimptchr12;
+74
+75       * array for imputed teachers total;
+76       array imptchr{*} imptchr7-imptchr12;
+77
+78       * imputed teacher for each school;
+79       do i = 1 to 6;
+80           midimptchr{i} = m{i}/MidPTRatio;
+81           hsimptchr{i} = h{i}/HSPTRatio;
+82
+83           imptchr{i} = sum(midimptchr{i},hsimptchr{i});
+84       end;
+85
+86       * rounding up imputed teacher values;
+87       teachertotal = ceil(sum(of imptchr7-imptchr12));
+88       drop imptchr7-imptchr12 hsimptchr7-hsimptchr12
+88 ! midimptchr7-midimptchr12 i;
+89
+90       * step 2a (v) ;
+91       studenttotal = sum(of grade7-grade12);
+92
+93       * step 2a (vi) ;
+94       format ptrrevised 6.2;
+95       if (teachertotal ne 0) and (teachertotal ne .) then ptrrevised =
+95 ! studenttotal/teachertotal;
+96
+97       * outputting merged datasets;
+98       *drop mapcity midgrade7 -- grade12;
+99
+100      if mid=1 and high=1 then output matched_schools;
+101
+102      * step 2b ;
+103      else if high=1 and mid=0 then output high_nomatch;
+104
+105      * step 2c ;
+106      else if high=0 and mid=1 then output mid_nomatch;
+107
+108  run;
+
+NOTE: Division by zero detected at line 81 column 28.
+NOTE: Division by zero detected at line 81 column 28.
+NOTE: Division by zero detected at line 81 column 28.
+NOTE: Division by zero detected at line 81 column 28.
+mid=1 high=1 School=BOYNTON-MOTON MapCity=BOYNTON MailCity=BOYNTON
+County=MUSKOGEE COUNTY Teachers=1.1 MidGrade7=9 MidGrade8=3 MidGrade9=.
+MidGrade10=. MidGrade11=. MidGrade12=. Ungraded=. PreTotal=. ElemTotal=.
+HSTotal=0 MidPTRatio=13.1 HSGrade7=. HSGrade8=. HSGrade9=0 HSGrade10=0
+HSGrade11=0 HSGrade12=0 HSPTRatio=0 FIRST.MapCity=1 LAST.MapCity=1
+FIRST.School=1 LAST.School=1 grade7=9 grade8=3 grade9=0 grade10=0 grade11=0
+grade12=0 i=7 midimptchr7=0.6870229008 midimptchr8=0.2290076336 midimptchr9=.
+midimptchr10=. midimptchr11=. midimptchr12=. hsimptchr7=. hsimptchr8=.
+hsimptchr9=. hsimptchr10=. hsimptchr11=. hsimptchr12=. imptchr7=0.6870229008
+imptchr8=0.2290076336 imptchr9=. imptchr10=. imptchr11=. imptchr12=.
+teachertotal=1 studenttotal=12 ptrrevised=12.00 _ERROR_=1 _N_=64
+NOTE: Division by zero detected at line 80 column 29.
+NOTE: Division by zero detected at line 80 column 29.
+mid=1 high=0 School=SEMINOLE PLEASANT GROVE MapCity=SEMINOLE MailCity=SEMINOLE
+County=SEMINOLE COUNTY Teachers=5.3 MidGrade7=0 MidGrade8=0 MidGrade9=.
+MidGrade10=. MidGrade11=. MidGrade12=. Ungraded=. PreTotal=0 ElemTotal=0
+HSTotal=. MidPTRatio=0 HSGrade7=. HSGrade8=. HSGrade9=. HSGrade10=. HSGrade11=.
+HSGrade12=. HSPTRatio=. FIRST.MapCity=0 LAST.MapCity=0 FIRST.School=1
+LAST.School=1 grade7=0 grade8=0 grade9=. grade10=. grade11=. grade12=. i=7
+midimptchr7=. midimptchr8=. midimptchr9=. midimptchr10=. midimptchr11=.
+midimptchr12=. hsimptchr7=. hsimptchr8=. hsimptchr9=. hsimptchr10=.
+hsimptchr11=. hsimptchr12=. imptchr7=. imptchr8=. imptchr9=. imptchr10=.
+imptchr11=. imptchr12=. teachertotal=. studenttotal=0 ptrrevised=. _ERROR_=1
+_N_=535
+NOTE: Missing values were generated as a result of performing an operation on
+      missing values.
+      Each place is given by: (Number of times) at (Line):(Column).
+      1138 at 67:20   2956 at 80:29   2380 at 81:28   1160 at 83:22
+      5 at 87:20      5 at 87:25
+NOTE: Mathematical operations could not be performed at the following places.
+      The results of the operations have been set to missing values.
+      Each place is given by: (Number of times) at (Line):(Column).
+      2 at 80:29   4 at 81:28
+NOTE: There were 610 observations read from the data set WORK.MID.
+NOTE: There were 459 observations read from the data set WORK.HIGH.
+NOTE: The data set WORK.MATCHED_SCHOOLS has 375 observations and 27 variables.
+NOTE: The data set WORK.HIGH_NOMATCH has 87 observations and 4 variables.
+NOTE: The data set WORK.MID_NOMATCH has 235 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.26 seconds
+      cpu time            0.20 seconds
+
+
+109
+110
+111  * formatting;
+112
+113  data matched_schools_fmtd (rename = (mapcity = City teachertotal =
+113! Teachers studenttotal = Students ptrrevised = PupilTeacherRatio));
+114      set matched_schools;
+115      keep School mapcity County teachertotal studenttotal ptrrevised;
+116      label ptrrevised = "Pupil/Teacher Ratio"
+117          mapcity = "City";
+118  run;
+
+NOTE: There were 375 observations read from the data set WORK.MATCHED_SCHOOLS.
+NOTE: The data set WORK.MATCHED_SCHOOLS_FMTD has 375 observations and 6
+      variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.03 seconds
+
+
+119
+120
+121  /* step 3: printing options */
+122
+123  /* step 4: sorting data */
+124  proc sort data = matched_schools_fmtd;
+125      by descending PupilTeacherRatio Students;
+126  run;
+
+NOTE: There were 375 observations read from the data set
+      WORK.MATCHED_SCHOOLS_FMTD.
+NOTE: The data set WORK.MATCHED_SCHOOLS_FMTD has 375 observations and 6
+      variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.03 seconds
+
+
+127
+128
+129  options orientation = landscape dtreset nonumber;
+130  ods pdf file = report;
+NOTE: Writing ODS PDF output to DISK destination "REPORT",
+      printer "PDF".
+131
+132  title 'Oklahoma Public Schools';
+133  title3 'Twenty-five Schools with Highest Pupil/Teacher
+133! Ratios';
+134  footnote 'Source: National Center for Education Statistics
+134! (nces.ed.gov)';
+135
+136  /* step 5: printing top 25 */
+137  proc print data = matched_schools_fmtd (obs=25);
+NOTE: Writing HTML Body file: sashtml.htm
+138  run;
+
+NOTE: There were 25 observations read from the data set
+      WORK.MATCHED_SCHOOLS_FMTD.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.88 seconds
+      cpu time            0.31 seconds
+
+
+139
+140  /* step 6: resetting options */
+141  options nodate;
+142  footnote;
+143
+144  /* step 7: proc freq */
+145  title2 'Number of Schools by County';
+146
+147  proc freq data = matched_schools_fmtd;
+148      tables county / nocum ;
+149  run;
+
+NOTE: There were 375 observations read from the data set
+      WORK.MATCHED_SCHOOLS_FMTD.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.12 seconds
+      cpu time            0.04 seconds
+
+
+150
+151  /* step 8: proc means */
+152  title3 'Analysis of Pupil/Teacher Ratio by County';
+153
+154  proc means data = matched_schools_fmtd n mean median;
+155  class county;
+156  run;
+
+NOTE: There were 375 observations read from the data set
+      WORK.MATCHED_SCHOOLS_FMTD.
+NOTE: PROCEDURE MEANS used (Total process time):
+      real time           0.23 seconds
+      cpu time            0.17 seconds
+
+
+157
+158  /* step 9: proc tab */
+159  /*proc tabulate data = matched_schools_fmtd;*/
+160  /*class county;*/
+161  /*table school;*/
+162  /*var PupilTeacherRatio Students;*/
+163  /*run;*/
+164
+165  proc contents data=_all_;
+166  run;
+
+NOTE: PROCEDURE CONTENTS used (Total process time):
+      real time           0.50 seconds
+      cpu time            0.17 seconds
+
+
+167
+168  ods pdf close;
+NOTE: ODS PDF printed 26 pages to
+      C:\Users\dsingh\Dropbox\Tamu\Stat_604\Homework\HW7_DueJune
+      25\HW7DSingh_HW07_PCoutput.pdf.

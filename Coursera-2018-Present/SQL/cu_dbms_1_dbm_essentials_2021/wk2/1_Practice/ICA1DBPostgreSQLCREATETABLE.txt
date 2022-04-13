@@ -1,0 +1,39 @@
+-- Drop tables if exist
+
+DROP TABLE IF EXISTS Customer;
+DROP TABLE IF EXISTS Facility;
+DROP TABLE IF EXISTS Location;
+
+
+-------------------- Customer --------------------------------
+
+CREATE TABLE Customer (
+custno char(4) not null,
+custname varchar(30) not null,
+address varchar(30) not null,
+Internal char(1) not null,
+contact varchar(30) not null,
+phone char(7) not null,
+city varchar(30) not null,
+state char(2) not null,
+zip char(10) not null,
+CONSTRAINT CustomerPk PRIMARY KEY (CustNo) );
+
+-------------------- Facility --------------------------------
+
+CREATE TABLE Facility(
+facno		char(4) not null,
+facname		varchar(50) not null,
+CONSTRAINT FacilityPk PRIMARY KEY (FacNo),
+CONSTRAINT UniqueFacName UNIQUE (FacName) );
+
+
+-------------------- Location --------------------------------
+
+CREATE TABLE Location(
+locno		char(4) not null,
+facno		char(4) not null,
+locname		varchar(30) not null,
+CONSTRAINT LocationPK PRIMARY KEY (LocNo), 
+CONSTRAINT FacilityFK FOREIGN KEY (FacNo) REFERENCES Location );
+

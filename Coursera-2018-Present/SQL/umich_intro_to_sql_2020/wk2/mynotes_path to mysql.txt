@@ -1,0 +1,6 @@
+startup commands for mysql, in windows, mamp
+
+C:/MAMP/bin/mysql/bin/mysql.exe -u root -p
+
+username is 'root'
+password is 'root'

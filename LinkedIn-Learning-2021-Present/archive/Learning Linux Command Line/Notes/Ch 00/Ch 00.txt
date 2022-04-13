@@ -1,0 +1,13 @@
+Ch 00: Introduction
+
+* A very quick intro to Linux
+
+(i) GNU general public license
+
+(ii) Linux is everywhere, in hardware and networks
+
+(iii) Distributions are related. Ubuntu desktop is Debian based.
+
+----------------------------------------------------------------------------------
+
+

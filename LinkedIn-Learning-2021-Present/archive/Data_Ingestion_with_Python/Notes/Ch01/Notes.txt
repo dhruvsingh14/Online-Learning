@@ -1,0 +1,13 @@
+Ch01: Overview
+
+* ETL Tasks
+
+(i) Convert; Validate; Enrich; Missing
+
+---------------------------------------------------------------------------------
+
+* Data Lake
+
+(i) Examples include google's bigquery, apache spark, etc.
+
+(ii) Single source for all data

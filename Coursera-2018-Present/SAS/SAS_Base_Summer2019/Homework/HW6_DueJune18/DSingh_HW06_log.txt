@@ -1,0 +1,288 @@
+      Licensed to TEXAS A&M UNIVERSITY - SFA T&R, Site 70080787.
+NOTE: This session is executing on the X64_10PRO  platform.
+
+
+
+NOTE: Updated analytical products:
+
+      SAS/STAT 14.3
+      SAS/ETS 14.3
+      SAS/OR 14.3
+      SAS/IML 14.3
+      SAS/QC 14.3
+
+NOTE: Additional host information:
+
+ X64_10PRO WIN 10.0.17763  Workstation
+
+NOTE: SAS initialization used:
+      real time           6.45 seconds
+      cpu time            1.60 seconds
+
+WARNING: One or more libraries specified in the concatenated library SASHELP
+WARNING: do not exist.  These libraries were removed from the concatenation.
+1    /*******************************************************************/
+2    /* Program Name: variable creation with arrays                     */
+3    /* Program Location: C:\Users\dsingh\Dropbox\Stat_604\Homework\HW6 */
+4    /* Date Created: 6/13/2019                                         */
+5    /* Author: Dhruv Singh                                             */
+6    /* Purpose: loops and arrays                                       */
+7
+8    libname hwdata 'C:\Users\dsingh\Dropbox\Tamu\Stat_604\Homework\hwdata' access = readonly;
+NOTE: Libref HWDATA was successfully assigned as follows:
+      Engine:        V9
+      Physical Name: C:\Users\dsingh\Dropbox\Tamu\Stat_604\Homework\hwdata
+9    libname charity 'C:\Users\dsingh\Dropbox\Tamu\Stat_604\Homework\HW6_DueJune18';
+NOTE: Libref CHARITY was successfully assigned as follows:
+      Engine:        V9
+      Physical Name: C:\Users\dsingh\Dropbox\Tamu\Stat_604\Homework\HW6_DueJune18
+10
+11   filename report
+11 ! 'C:\Users\dsingh\Dropbox\Tamu\Stat_604\Homework\HW6_DueJune18\HW6DSingh_HW06_PCoutput.pdf';
+12
+13
+14   /* Step 2: reading in chopnjoe data */
+15   data chopnjoe;
+16       set hwdata.chopnjoe19;
+17   run;
+
+NOTE: There were 424 observations read from the data set HWDATA.CHOPNJOE19.
+NOTE: The data set WORK.CHOPNJOE has 424 observations and 24 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.23 seconds
+      cpu time            0.01 seconds
+
+
+18
+19   * step 2 contd: rotating to narrow form using do loop;
+20   data rotate2 (keep=Employee_Id i Organization);
+21      set hwdata.chopnjoe19
+22                (drop=name department salary amount1-amount10);
+23      array contrib{10} $ charity1-charity10;
+24      do i=1 to 10;
+25         if contrib{i} ne missing then do;
+26            Organization=contrib{i};
+27            output;
+28         end;
+29      end;
+30   run;
+
+NOTE: Variable missing is uninitialized.
+NOTE: There were 424 observations read from the data set HWDATA.CHOPNJOE19.
+NOTE: The data set WORK.ROTATE2 has 2243 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.12 seconds
+      cpu time            0.04 seconds
+
+
+31
+32   /* Step 3: sorting narrow dataset in place */
+33   proc sort data = rotate2;
+34       by Organization;
+35   run;
+
+NOTE: There were 2243 observations read from the data set WORK.ROTATE2.
+NOTE: The data set WORK.ROTATE2 has 2243 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.01 seconds
+
+
+36
+37
+38   /* Step 4: creating sorted charities data in work library */
+39   data charities;
+40       set hwdata.charities;
+41   run;
+
+NOTE: There were 256 observations read from the data set HWDATA.CHARITIES.
+NOTE: The data set WORK.CHARITIES has 256 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.04 seconds
+
+
+42
+43   proc sort data = charities;
+44       by Organization;
+45   run;
+
+NOTE: There were 256 observations read from the data set WORK.CHARITIES.
+NOTE: The data set WORK.CHARITIES has 256 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.03 seconds
+
+
+46
+47
+48   /* Step 5: combining datasets by organization */
+49   data combined_data (drop = Org_id);
+50       merge rotate2 (in=r)
+51           charities (in=c);
+52       by organization;
+53       if r=1 and c=1;
+54   run;
+
+NOTE: There were 2243 observations read from the data set WORK.ROTATE2.
+NOTE: There were 256 observations read from the data set WORK.CHARITIES.
+NOTE: The data set WORK.COMBINED_DATA has 2243 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.03 seconds
+
+
+55
+56   /* Step 6: transposing marged data from narrow to flat */
+57   proc sort data = combined_data;
+58       by employee_id;
+59   run;
+
+NOTE: There were 2243 observations read from the data set WORK.COMBINED_DATA.
+NOTE: The data set WORK.COMBINED_DATA has 2243 observations and 4 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.04 seconds
+
+
+60
+61   proc transpose data = combined_data
+62                   out = charity_data (drop = _NAME_ _LABEL_)
+63                   prefix = Donee_Type;
+64       var category;
+65       by employee_id;
+66       id i;
+67   run;
+
+NOTE: There were 2243 observations read from the data set WORK.COMBINED_DATA.
+NOTE: The data set WORK.CHARITY_DATA has 424 observations and 11 variables.
+NOTE: PROCEDURE TRANSPOSE used (Total process time):
+      real time           0.14 seconds
+      cpu time            0.07 seconds
+
+
+68
+69   * reordering columns ;
+70   data charity_data;
+71       retain employee_id donee_type1-donee_type10;
+72       set charity_data;
+73   run;
+
+NOTE: There were 424 observations read from the data set WORK.CHARITY_DATA.
+NOTE: The data set WORK.CHARITY_DATA has 424 observations and 11 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.03 seconds
+
+
+74
+75   /* Step 7: final merge, summary variables */
+76   proc sort data = charity_data;
+77       by employee_id;
+78   run;
+
+NOTE: There were 424 observations read from the data set WORK.CHARITY_DATA.
+NOTE: The data set WORK.CHARITY_DATA has 424 observations and 11 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.01 seconds
+
+
+79
+80   * sort employee id for merge ;
+81   proc sort data = chopnjoe;
+82       by employee_id;
+83   run;
+
+NOTE: There were 424 observations read from the data set WORK.CHOPNJOE.
+NOTE: The data set WORK.CHOPNJOE has 424 observations and 24 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.04 seconds
+
+
+84
+85   * merging;
+86   data giving_analysis (drop = relief_amt1-relief_amt10 hunger_amt1-hunger_amt10 i);
+87       merge chopnjoe (in=chop)
+88           charity_data (in=char); /* org types wide*/
+89       by employee_id;
+90       if chop=1 and char=1;
+91
+92       * creating array for amount contributions;
+93       array contrib{*} amount1-amount10;
+94
+95       * creating a char array for org type;
+96       array org_type{10} $ donee_type1-donee_type10;
+97
+98       * creating empty arrays to record relief hunger amounts;
+99       array relief_amt{10};
+100      array hunger_amt{10};
+101
+102      * populating amt arrays;
+103      do i=1 to 10;
+104          if org_type{i}='Relief' then relief_amt{i}=contrib{i};
+105          else relief_amt{i}=0;
+106
+107          if org_type{i}='Hunger' then hunger_amt{i}=contrib(i);
+108          else hunger_amt{i}=0;
+109      end;
+110
+111      * computing decomposed sums;
+112      chrty1_amt= sum(of relief_amt{*});
+113      chrty2_amt = sum(of hunger_amt{*});
+114
+115      * creates total contribution variable;
+116      total = sum(of contrib{*});
+117
+118      * percent column;
+119      gift_pct = total/salary;
+120
+121      label chrty1_amt = "Relief Amount"
+122          chrty2_amt = "Hunger Amount"
+123          total = "Total Contributions"
+124          gift_pct = "% of Salary Given";
+125
+126      format gift_pct percent6.1;
+127
+128  run;
+
+NOTE: There were 424 observations read from the data set WORK.CHOPNJOE.
+NOTE: There were 424 observations read from the data set WORK.CHARITY_DATA.
+NOTE: The data set WORK.GIVING_ANALYSIS has 424 observations and 38 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.20 seconds
+      cpu time            0.07 seconds
+
+
+129
+130  /* Step 8: printing descriptor and data portions of final dataset */
+131  ods pdf file = report;
+NOTE: Writing ODS PDF output to DISK destination "REPORT", printer "PDF".
+132  title 'Step 8: Descriptor Portion of Giving Analysis Data Set';
+133  proc contents data = giving_analysis;
+NOTE: Writing HTML Body file: sashtml.htm
+134  run;
+
+NOTE: PROCEDURE CONTENTS used (Total process time):
+      real time           1.43 seconds
+      cpu time            0.35 seconds
+
+
+135
+136  title 'Step 8: Data Portion of Giving Analysis Data Set';
+137  proc print data = giving_analysis noobs label;
+138      var employee_id name department salary chrty1_amt chrty2_amt total gift_pct;
+139  run;
+
+NOTE: There were 424 observations read from the data set WORK.GIVING_ANALYSIS.
+NOTE: At least one W.D format was too small for the number to be printed. The decimal may be
+      shifted by the "BEST" format.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.58 seconds
+      cpu time            0.51 seconds
+
+
+140  ods pdf close;
+NOTE: ODS PDF printed 14 pages to
+      C:\Users\dsingh\Dropbox\Tamu\Stat_604\Homework\HW6_DueJune18\HW6DSingh_HW06_PCoutput.pdf.

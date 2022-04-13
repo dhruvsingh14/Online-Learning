@@ -1,0 +1,83 @@
+02: Common Data Structures
+
+* Overview of Data Structures
+
+(i) Algorithms are associated with data structures, 
+	
+	since most algorithms are intended to work with data
+
+(ii) Data structures used to organize information in different ways: list, 
+
+	or tree (eg. files and folders)
+
+(iii) Most common: arrays, linked lists, stacks and queues, trees, hash tables
+
+(iv) Type 1: Simplest: array. indexed, starting at 0.
+
+(v) Even elements: using even_elem = array[2n]
+
+(vi) 2d arrays: 2 indexes
+
+(vii) Array operations: calculate item index, 
+
+	insert or delete item, at start or middle
+
+(viii) Type 2: Linked Lists: singly linked lists. vs. doubly linked lists.
+
+(ix) Linked lists: easier to add or remove items, compared to arrays
+
+(x) Can't do constant time random item access however. 
+
+(xi) Functions add items to the head of the list. Delete deletes them.
+
+-------------------------------------------------------------------------------------
+
+* Stacks and Queues
+
+(i) Stack: collection of elements that supports two operations: push, and pop
+
+(ii) The last item pushed is the first one popped
+
+(iii) Pop is a constant time operation
+
+(iv) Queue: collection that supports adding and removing
+
+(v) Queues are also constant time operations
+
+(vi) Stacks applications: used to parse and evaluate, 
+
+		backtracking eg back button in browser
+
+		backtracking: add elements while browsing, 
+
+			back button pops off the latest element
+
+(vii) Queue applications: order processing, 
+
+		fulfilled in order in which they were received
+
+		text messages: sent in the order in which they were written
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

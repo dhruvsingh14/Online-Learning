@@ -1,0 +1,19 @@
+-- Programmer: Dhruv Singh
+-- Date Modified: 06/12/21
+-- Title: Week 3: Quiz
+-- Topic: Subqueries
+-- DBMS: PostgreSQL
+
+-- Question 6: Union
+SELECT "FirstName", "LastName"
+	FROM "Employees"
+UNION 
+SELECT "FirstName", "LastName"
+	FROM "Customers"
+	ORDER BY "LastName" DESC
+
+-- Question 7: 2 where conditions
+SELECT COUNT("Customers"."CustomerId") AS CustNum
+	FROM "Customers", "Invoices"
+	WHERE "Customers"."CustomerId" = "Invoices"."CustomerId"
+	AND "Customers"."City" != "Invoices"."BillingCity";

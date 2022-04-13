@@ -1,0 +1,83 @@
+Ch 1: Understanding Design Patterns
+
+(i) Design Patterns: well accepted solutions to recurring problems
+
+	benefits: don't reinvent the wheel. save time and cost. 
+
+	require use of object oriented programming
+
+(ii) characteristics of design patterns: language neutral, dynamic, incomplete
+
+					promote customization
+
+-------------------------------------------------------------------------------------
+
+* Types of Design Patterns: 
+
+(i) Creational, Structural, Behavioral
+
+-------------------------------------------------------------------------------------
+
+* objected oriented programming
+
+(i) non oop languages: such as c, make little use of design patterns
+
+(ii) objects: entities in problem and solution domain
+
+(ii) classes: templates used to create objects, to avoid making them from scratch. 
+	
+		cookie cutters.
+
+		represent objects in terms of attributes and methods. 
+
+-------------------------------------------------------------------------------------
+
+* Inheritance, polymorphism
+
+(i) Inheritance: relationship between classes as parent and child
+
+(ii) Child class: keeps attributes and methods of parent
+	
+			can add, or overwrite as well
+
+(iii) Polymorphism: relies on inheritance. same name, different types. 
+
+-------------------------------------------------------------------------------------
+
+* Pattern context: 
+
+(i) Participants: class involved, to form a design pattern. different roles
+
+(ii) Quality attributes: non functional requirements. eg: usability, reliability etc. 
+
+			effect on entire software
+
+(iii) Forces: varios factors or trade-offs to consider
+
+(iv) Consequences: worse performance
+
+-------------------------------------------------------------------------------------
+
+* Pattern language
+
+(i) Name: capture the gist. part of vocabulary. should be memorable. 
+
+(ii) Context: scenario, when to use
+
+(iii) Problem: design challenge trying to address
+
+(iv) Solution: specifies the pattern itself. 
+
+(v) Related patterns: list other patterns
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,98 @@
+Ch 3: Edit the macro
+
+* introduction to visual basic (VBA)
+
+(i) console in vba is called immediate window
+
+(ii) eg command: ?activesheet.name
+
+
+-------------------------------------------------------------------------------------
+
+* Reading your recorded code
+
+(i) Every procedure in vba starts with the word sub (sub procedure). 
+
+	Eg: Sub Name()
+
+(ii) End with 'End sub'
+
+(iii) Comment lines are using 1 single quote
+
+-------------------------------------------------------------------------------------
+
+* Testing recorded macros
+
+(i) / + i + w => new worksheet, / + e + s + v=> paste special values
+
+(ii) alt + t + m + m => macro list
+
+(iii) Workflow once comfortable, record macro, 
+
+	go into code and delete what's inefficient
+
+(iv) In vba run > reset turns off the debugger
+
+-------------------------------------------------------------------------------------
+
+* Adjusting recorded macros
+
+(i) using alert command to toggle popups or warnings. and to set it back on.
+
+(ii) consolidating code
+
+-------------------------------------------------------------------------------------
+
+* Making recorded macros dynamic
+
+(i) Avoiding hard coded lines of code 
+
+(ii) With command
+
+(iii) ActiveSheet command instead of explicit references
+
+(iv) Error handler to suppress message for case, then reset it 
+
+-------------------------------------------------------------------------------------
+
+* How to step through code when testing
+
+(i) Press F5 to run code in its entirety
+
+(ii) Press F8 to step through code line by line
+
+(iii) 'Debug > run to cursor' will run all lines above cursor
+
+(iv) 'Debug > reset' will reset  
+
+(v) Can also toggle breakpoint, such that running all code will stop there
+
+		can then continue to f8 through the remainder of the code
+
+(vi) To backpaddle, can click at start of code line, then 'ctrl+f9' to get there,
+
+	and undo the extra lines run
+
+(vii) Breakpoint stays in place until you toggle it off, or use f9 to do so.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

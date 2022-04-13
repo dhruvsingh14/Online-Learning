@@ -1,0 +1,252 @@
+NOTE: Copyright (c) 2016 by SAS Institute Inc., Cary, NC, USA.
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M5)
+      Licensed to TEXAS A&M UNIVERSITY - SFA T&R, Site 70080787.
+NOTE: This session is executing on the X64_10PRO  platform.
+
+
+
+NOTE: Updated analytical products:
+
+      SAS/STAT 14.3
+      SAS/ETS 14.3
+      SAS/OR 14.3
+      SAS/IML 14.3
+      SAS/QC 14.3
+
+NOTE: Additional host information:
+
+ X64_10PRO WIN 10.0.17763  Workstation
+
+NOTE: SAS initialization used:
+      real time           5.58 seconds
+      cpu time            1.43 seconds
+
+WARNING: One or more libraries specified in the concatenated library SASHELP
+WARNING: do not exist.  These libraries were removed from the concatenation.
+1    /*******************************************************************/
+2    /* Program Name:                                                   */
+3    /* Program Location: C:\Users\dsingh\Dropbox\Stat_604\Homework\HW3 */
+4    /* Date Created:                                                   */
+5    /* Author: Dhruv Singh                                             */
+6    /* Purpose:                                                        */
+7
+8
+9    /* Creating library using directory containing orion dataset */
+10   libname orion
+10 ! 'C:\Users\dsingh\Dropbox\Stat_604\CourseMaterials\PRG1_Data_and_Programs'
+10 ! access=readonly;
+NOTE: Libref ORION was successfully assigned as follows:
+      Engine:        V9
+      Physical Name:
+      C:\Users\dsingh\Dropbox\Stat_604\CourseMaterials\PRG1_Data_and_Programs
+11   libname donation 'C:\Users\dsingh\Dropbox\Stat_604\Homework\HW3';
+NOTE: Libref DONATION was successfully assigned as follows:
+      Engine:        V9
+      Physical Name: C:\Users\dsingh\Dropbox\Stat_604\Homework\HW3
+12
+13
+14
+15   /* Creating temporary dataset using orion employee data, quarterly donations */
+16   data work.donations;
+17      set orion.Employee_donations;
+18      keep Employee_ID Qtr1 Qtr2 Qtr3 Qtr4;
+19      Total=sum(Qtr1,Qtr2,Qtr3,Qtr4);
+20   run;
+
+NOTE: There were 124 observations read from the data set ORION.EMPLOYEE_DONATIONS.
+NOTE: The data set WORK.DONATIONS has 124 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.08 seconds
+      cpu time            0.04 seconds
+
+
+21
+22   /* Printing quarterly donations */
+23   *proc print data=work.donations;
+24
+25   /* Saving data to permanent library */
+26   data donation.donations;
+27      set orion.Employee_donations;
+28      keep Employee_ID Qtr1 Qtr2 Qtr3 Qtr4;
+29      Total=sum(Qtr1,Qtr2,Qtr3,Qtr4);
+30   run;
+
+NOTE: There were 124 observations read from the data set ORION.EMPLOYEE_DONATIONS.
+NOTE: The data set DONATION.DONATIONS has 124 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.01 seconds
+
+
+31
+32
+33   /* Output delivery system - pdf */
+34   ods pdf file='DSingh_HW03_outputA.pdf' bookmarkgen=no;
+NOTE: Writing ODS PDF output to DISK destination
+      "C:\Users\dsingh\Dropbox\Stat_604\Homework\HW3\DSingh_HW03_outputA.pdf",
+      printer "PDF".
+35   title 'Descriptor Portion of Donations Permanent Data Set';
+36   proc contents data=donation.donations;
+NOTE: Writing HTML Body file: sashtml.htm
+37   run;
+
+NOTE: PROCEDURE CONTENTS used (Total process time):
+      real time           1.00 seconds
+      cpu time            0.40 seconds
+
+
+38
+39   title 'Descriptor Portion of All Data Sets in Work Library';
+40   proc contents data=work._ALL_;
+41   run;
+
+NOTE: PROCEDURE CONTENTS used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.06 seconds
+
+
+42
+43   title 'List of Data Sets in Orion Library';
+44   proc contents data=orion._ALL_ nods;
+45   run;
+
+NOTE: PROCEDURE CONTENTS used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.04 seconds
+
+
+46
+47   ods pdf close;
+NOTE: ODS PDF printed 5 pages to
+      C:\Users\dsingh\Dropbox\Stat_604\Homework\HW3\DSingh_HW03_outputA.pdf.
+
+
+
+
+NOTE: Copyright (c) 2016 by SAS Institute Inc., Cary, NC, USA.
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M5)
+      Licensed to TEXAS A&M UNIVERSITY - SFA T&R, Site 70080787.
+NOTE: This session is executing on the X64_10PRO  platform.
+
+
+
+NOTE: Updated analytical products:
+
+      SAS/STAT 14.3
+      SAS/ETS 14.3
+      SAS/OR 14.3
+      SAS/IML 14.3
+      SAS/QC 14.3
+
+NOTE: Additional host information:
+
+ X64_10PRO WIN 10.0.17763  Workstation
+
+NOTE: SAS initialization used:
+      real time           4.59 seconds
+      cpu time            1.62 seconds
+
+WARNING: One or more libraries specified in the concatenated library SASHELP
+WARNING: do not exist.  These libraries were removed from the concatenation.
+1    /*******************************************************************/
+2    /* Program Name:                                                   */
+3    /* Program Location: C:\Users\dsingh\Dropbox\Stat_604\Homework\HW3 */
+4    /* Date Created:                                                   */
+5    /* Author: Dhruv Singh                                             */
+6    /* Purpose:                                                        */
+7
+8
+9    /* Creating library using directory containing orion dataset */
+10   libname orion
+10 ! 'C:\Users\dsingh\Dropbox\Stat_604\CourseMaterials\PRG1_Data_and_Programs'
+10 ! access=readonly;
+NOTE: Libref ORION was successfully assigned as follows:
+      Engine:        V9
+      Physical Name:
+      C:\Users\dsingh\Dropbox\Stat_604\CourseMaterials\PRG1_Data_and_Programs
+11   libname donation 'C:\Users\dsingh\Dropbox\Stat_604\Homework\HW3';
+NOTE: Libref DONATION was successfully assigned as follows:
+      Engine:        V9
+      Physical Name: C:\Users\dsingh\Dropbox\Stat_604\Homework\HW3
+12
+13
+14
+15   /* Creating temporary dataset using orion employee data, quarterly donations */
+16   /*data work.donations;*/
+17   /*   set orion.Employee_donations;*/
+18   /*   keep Employee_ID Qtr1 Qtr2 Qtr3 Qtr4;*/
+19   /*   Total=sum(Qtr1,Qtr2,Qtr3,Qtr4);*/
+20   /*run;*/
+21
+22   /* Printing quarterly donations */
+23   *proc print data=work.donations;
+24
+25   /* Saving data to permanent library */
+26   /*data donation.donations;*/
+27   /*   set orion.Employee_donations;*/
+28   /*   keep Employee_ID Qtr1 Qtr2 Qtr3 Qtr4;*/
+29   /*   Total=sum(Qtr1,Qtr2,Qtr3,Qtr4);*/
+30   /*run;*/
+31
+32
+33   /* Output delivery system - pdf */
+34   /*ods pdf file='DSingh_HW03_outputA.pdf' bookmarkgen=no;*/
+35   /*title 'Descriptor Portion of Donations Permanent Data Set';*/
+36   /*proc contents data=donation.donations;*/
+37   /*run;*/
+38   /**/
+39   /*title 'Descriptor Portion of All Data Sets in Work Library';*/
+40   /*proc contents data=work._ALL_;*/
+41   /*run;*/
+42   /**/
+43   /*title 'List of Data Sets in Orion Library';*/
+44   /*proc contents data=orion._ALL_ nods;*/
+45   /*run;*/
+46   /*ods pdf close;*/
+47
+48
+49   /* Output delivery system - pdf */
+50   ods pdf file='DSingh_HW03_outputB.pdf' style=ocean bookmarkgen=no;
+NOTE: Writing ODS PDF output to DISK destination
+      "C:\Users\dsingh\Dropbox\Stat_604\Homework\HW3\DSingh_HW03_outputB.pdf",
+      printer "PDF".
+51   title 'Descriptor Portion of Donations Permanent Data Set';
+52   proc contents data=donation.donations;
+NOTE: Writing HTML Body file: sashtml.htm
+53   run;
+
+NOTE: PROCEDURE CONTENTS used (Total process time):
+      real time           0.85 seconds
+      cpu time            0.42 seconds
+
+
+54
+55   title 'Descriptor Portion of All Data Sets in Work Library';
+56   proc contents data=work._ALL_;
+57   run;
+
+NOTE: PROCEDURE CONTENTS used (Total process time):
+      real time           0.11 seconds
+      cpu time            0.00 seconds
+
+
+58
+59   title 'List of Data Sets in Orion Library';
+60   proc contents data=orion._ALL_ nods;
+61   run;
+
+NOTE: PROCEDURE CONTENTS used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.04 seconds
+
+
+62   ods pdf close;
+ERROR: File is in use,
+       C:\Users\dsingh\Dropbox\Stat_604\Homework\HW3\DSingh_HW03_outputB.pdf.
+
+
+Differences and explanation:
+
+The pdf created using style = ocean suppressed the descriptor portion automatically, when describing all data sets within the work library.
+
+Also, output B did not recognize the donations dataset as part of the work library. This may be due to the style type (ocean) and the contents it displays.

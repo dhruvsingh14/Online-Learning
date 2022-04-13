@@ -1,0 +1,75 @@
+03: Securing Django
+
+* Using a separate Python environment for isolation
+
+(i) Django one of the most trusted web development frameworks
+
+(ii) Trusted by NASA, Instagram, Mozilla
+
+(iii) Allows for rapid development with few compromises
+
+(iv) Robust user handling system
+
+-------------------------------------------------------------------------------------
+
+* "Batteries included" approach in django
+
+(i) security key on line 23 of settings file, generated
+
+(ii) created this application, some settings need to be configured
+
+-------------------------------------------------------------------------------------
+
+* Generating new projects
+
+(i) Application secrets: keys, database passwords, and tokens
+
+(ii) Should be kept out of source code, reset if any suspicion they're compromised
+
+(iii) one approach, cut secret key, cmd: echo "[your secret key]" > secret_key.txt
+
+(iv) have source code read from this file. store key in a secure place, 
+
+	ideally not the base directory
+
+(v) can keep secrets in environment variables, also secret management tools
+
+(vi) change admin to apstaff. honeypot: to capture ip addresses, 
+
+				and figure out who is trying to attack them 
+
+-------------------------------------------------------------------------------------
+
+* Django settings, secrets, debug mode dangers
+
+(i) source control can sometimes be compromised, want to minimize consequences
+
+(ii) use gitignore templates when working with django or python etc. 
+
+(iii) after copying in python.gitignore template from github, 
+
+	development database will no longer be committed
+
+(iv) git status to check on items in directory / git repository
+
+(v) git init to declare directory as repository
+
+(vi) when initializing git first time: input name, and email
+
+(vii) also, replace single quotes with double quotes, 
+
+	that is a common source of error in command line
+
+
+
+
+
+
+
+
+
+
+
+
+
+

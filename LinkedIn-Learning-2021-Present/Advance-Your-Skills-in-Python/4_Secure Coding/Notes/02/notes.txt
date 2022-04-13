@@ -1,0 +1,77 @@
+02: Avoiding Python Pitfalls
+
+* Dynamic typing
+
+(i) Can increase productivity, reduce boilerplate
+
+(ii) Should be used with caution
+
+(iii) Truthy and Falsy values
+
+(iv) defining permissions using boolean values, and pytest library
+
+(v) message: 403 if blocked, 200 if permissions
+
+(vi) cmd: python> import this gives the zen of python poem lol
+
+-------------------------------------------------------------------------------------
+
+* Explicit assertions with python
+
+(i) Great for testing and bugging
+
+(ii) -O to run in optimized mode, circumvents error. to fix, use if then 
+
+(iii) consequences: giving read priveleges to people who should not have access
+
+					to that data
+
+-------------------------------------------------------------------------------------
+
+* Don't get yourself into a Pickle
+
+(i) Pickle is like python's json, but is not interchangeable
+
+(ii) Susceptible to remote code execution, to only be used with trusted data
+
+(iii) An unauthorized hacker is able to delete a file! 
+
+	Anywhere from changing data to running scripts
+
+-------------------------------------------------------------------------------------
+
+* Challenge: secure the end point
+
+(i) small python web application
+
+(ii) listening in local host on port 80000
+
+(iii) local host is false becase i'm not authenticated
+
+(iv) stopping server by hitting control+c
+
+(v) running in optimized mode, circumvents protocol. wh(?)
+
+-------------------------------------------------------------------------------------
+
+* Solution: secure the end point
+
+(i) problem in views.py: using an implicit check for is authenticated
+
+(ii) main issue: we're using an assert for core business logic. 
+
+	should use if statement intead
+
+(iii) assert: can compromise. don't use just because more pythonic
+
+(iv) success = false, which is the desired result
+
+(v) assert is good for testing, but not for core business logic
+
+
+
+
+
+
+
+

@@ -1,0 +1,3 @@
+assignment 1 is completed. 
+
+however the bonus chart doesn't render

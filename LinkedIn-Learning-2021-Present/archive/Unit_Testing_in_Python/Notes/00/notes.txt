@@ -1,0 +1,19 @@
+00: Introduction
+
+* Why Pytest 
+
+(i) Pytest is helpful because you don't have to write standalone unit test
+
+(ii) And don't have to handle class and inheritance
+
+-------------------------------------------------------------------------------------
+
+* Roadmap
+
+(i) TDD: test driven development
+
+
+
+
+
+

@@ -1,0 +1,138 @@
+CREATE DATABASE Music DEFAULT CHARACTER SET utf8;
+
+USE Music;  (Command line only)
+
+CREATE TABLE Artist (
+  artist_id INTEGER NOT NULL AUTO_INCREMENT,
+  name VARCHAR(255),
+  PRIMARY KEY(artist_id)
+) ENGINE = InnoDB;
+
+CREATE TABLE Album (
+  album_id INTEGER NOT NULL AUTO_INCREMENT,
+  title VARCHAR(255),
+  artist_id INTEGER,
+
+  PRIMARY KEY(album_id),
+  INDEX USING BTREE (title),
+
+  CONSTRAINT FOREIGN KEY (artist_id)
+    REFERENCES Artist (artist_id)
+    ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB;
+
+CREATE TABLE Genre (
+  genre_id INTEGER NOT NULL AUTO_INCREMENT,
+  name VARCHAR(255),
+  PRIMARY KEY(genre_id)
+) ENGINE = InnoDB;
+
+CREATE TABLE Track (
+  track_id INTEGER NOT NULL AUTO_INCREMENT,
+  title VARCHAR(255),
+  len INTEGER,
+  rating INTEGER,
+  count INTEGER,
+  album_id INTEGER,
+  genre_id INTEGER,
+
+  PRIMARY KEY(track_id),
+  INDEX USING BTREE (title),
+
+  CONSTRAINT FOREIGN KEY (album_id) REFERENCES Album (album_id)
+    ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT FOREIGN KEY (genre_id) REFERENCES Genre (genre_id)
+    ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB;
+
+-------------------------------------------------------------
+-------------- MY SOLUTION PART 1 ---------------------------
+-------------------------------------------------------------
+INSERT INTO Artist (name) VALUES ('Bob Dylan');
+INSERT INTO Artist (name) VALUES ('The Who');
+INSERT INTO Artist (name) VALUES ('James Brown');
+
+INSERT INTO Genre (name) VALUES ('Folk');
+INSERT INTO Genre (name) VALUES ('Rock');
+INSERT INTO Genre (name) VALUES ('Funk');
+
+INSERT INTO Album (title, artist_id) VALUES ('Desire', 1);
+INSERT INTO Album (title, artist_id) VALUES ('Highway 61 Revisited', 1);
+INSERT INTO Album (title, artist_id) VALUES ('Another Side of Bob Dylan', 1);
+INSERT INTO Album (title, artist_id) VALUES ('Blood on the Tracks', 1);
+INSERT INTO Album (title, artist_id) VALUES ('Nashville Skyline', 1);
+
+INSERT INTO Album (title, artist_id) VALUES ('Who''s Next', 2);
+INSERT INTO Album (title, artist_id) VALUES ('Tommy', 2);
+INSERT INTO Album (title, artist_id) VALUES ('Meaty Beaty Big and Bouncy', 2);
+INSERT INTO Album (title, artist_id) VALUES ('My Generation', 2);
+INSERT INTO Album (title, artist_id) VALUES ('My Generation', 2);
+
+INSERT INTO Album (title, artist_id) VALUES ('Sex Machine', 3);
+INSERT INTO Album (title, artist_id) VALUES ('Get on the Good Foot', 3);
+INSERT INTO Album (title, artist_id) VALUES ('Out Of Sight', 3);
+INSERT INTO Album (title, artist_id) VALUES ('Papa''s Got a Brand New Bag', 3);
+INSERT INTO Album (title, artist_id) VALUES ('Revolution of the Mind: Live at the Apollo, Volume III', 3);
+
+INSERT INTO Track (title, rating, len, count, album_id, genre_id)
+    VALUES ('Isis', 5, 4, 0, 1, 1);
+INSERT INTO Track (title, rating, len, count, album_id, genre_id)
+    VALUES ('Like a Rolling Stone', 5, 20, 0, 2, 1);
+INSERT INTO Track (title, rating, len, count, album_id, genre_id)
+    VALUES ('All I Really Want to Do', 5, 23, 0, 3, 1);
+INSERT INTO Track (title, rating, len, count, album_id, genre_id)
+    VALUES ('Tangled Up in Blue', 5, 18, 0, 4, 1);
+INSERT INTO Track (title, rating, len, count, album_id, genre_id)
+    VALUES ('Lay Lady Lay', 5, 12, 0, 5, 1);
+
+INSERT INTO Track (title, rating, len, count, album_id, genre_id)
+    VALUES ('Won''t Get Fooled Again', 5, 22, 0, 6, 2);
+INSERT INTO Track (title, rating, len, count, album_id, genre_id)
+    VALUES ('Pinball Wizard', 5, 14, 0, 7, 2);
+INSERT INTO Track (title, rating, len, count, album_id, genre_id)
+    VALUES ('Substitute', 5, 10, 0, 8, 2);
+INSERT INTO Track (title, rating, len, count, album_id, genre_id)
+    VALUES ('My Generation', 5, 13, 0, 9, 2);
+INSERT INTO Track (title, rating, len, count, album_id, genre_id)
+    VALUES ('I Can''t Explain', 5, 15, 0, 10, 2);
+
+INSERT INTO Track (title, rating, len, count, album_id, genre_id)
+    VALUES ('Get Up (I Feel Like Being a) Sex Machine', 5, 40, 0, 11, 3);
+INSERT INTO Track (title, rating, len, count, album_id, genre_id)
+    VALUES ('Get on the Good Foot', 5, 20, 0, 12, 3);
+INSERT INTO Track (title, rating, len, count, album_id, genre_id)
+    VALUES ('I Got You (I Feel Good)', 5, 23, 0, 13, 3);
+INSERT INTO Track (title, rating, len, count, album_id, genre_id)
+    VALUES ('Papa''s Got a Brand New Bag', 5, 26, 0, 14, 3);
+INSERT INTO Track (title, rating, len, count, album_id, genre_id)
+    VALUES ('Soul Power', 5, 10, 0, 15, 3);
+--------------------------------------------------------------------
+-------------- END OF MY SOLUTION PART 1 ---------------------------
+--------------------------------------------------------------------
+
+-------------------------------------------------------------
+-------------- MY SOLUTION PART 2 ---------------------------
+-------------------------------------------------------------
+SELECT Track.title, Artist.name, Album.title, Genre.name 
+    FROM Track JOIN Genre JOIN Album JOIN Artist 
+    ON Track.genre_id = Genre.genre_id AND Track.album_id = 
+    Album.album_id AND Album.artist_id = Artist.artist_id
+    ORDER BY Album.title
+--------------------------------------------------------------------
+-------------- END OF MY SOLUTION PART 2 ---------------------------
+--------------------------------------------------------------------
+
+
+-------------------------------------------------------------
+-------------- MY SOLUTION PART 3 ---------------------------
+-------------------------------------------------------------
+SELECT DISTINCT Artist.name, Genre.name 
+    FROM Track JOIN Genre JOIN Album JOIN Artist 
+    ON Track.genre_id = Genre.genre_id AND Track.album_id = 
+    Album.album_id AND Album.artist_id = Artist.artist_id
+    WHERE Artist.name = 'Bob Dylan'
+--------------------------------------------------------------------
+-------------- END OF MY SOLUTION PART 3 ---------------------------
+--------------------------------------------------------------------
+
+

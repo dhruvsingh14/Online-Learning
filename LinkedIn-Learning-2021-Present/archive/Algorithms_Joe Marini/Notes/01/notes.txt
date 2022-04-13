@@ -1,0 +1,35 @@
+01: Overview
+
+* What are algorithms 
+
+(i) Complexity: Space complexity (stored space), time complexity (efficiency)
+
+(ii) Inputs and outputs: eg. sorting algorithms
+
+(iii) Classification: serial/parallel, exact/approximate, deterministic/non-deterministic
+
+-------------------------------------------------------------------------------------
+
+* Common algorithms
+
+(i) Search algorithms (most common): eg substring
+
+(ii) Sorting algorithms: also very common
+
+(iii) Computational algorithms: eg. is a number a prime number
+
+(iv) Collection algorithms: counting, filtering etc.
+
+(v) Euclid's algorithm: find the gcd
+
+-------------------------------------------------------------------------------------
+
+* Measuring algorithm performance
+
+(i) Change based on input set of data: eg Big-O notation for algorithm performance
+
+(ii) O means order of operation
+
+(iii) Common big O terms: constant time, logarithmic, linear, log linear, quadratic
+
+

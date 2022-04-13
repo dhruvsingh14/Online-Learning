@@ -1,0 +1,89 @@
+Ch 02: SCommand-Line Basics
+
+* What is the command-line
+
+(i) We are used to GUI, a lot is not done with GUIs, including servers, 
+
+	data analysis, storage etc
+
+(ii) CLI: text based, can see input and output text on the screen
+
+(iii) Can interact with files
+
+(iv) Bash: bourne again shell used to interact with system
+
+(v) CLI used in terminal. Common to have multiple terminals open. 
+
+(vi) People use terminal and shell interchangeably, even though they're
+
+	slightly different. No harm in doing so however. 
+
+----------------------------------------------------------------------------------
+
+* Understand how command are structured: 
+
+(i) Some common concepts
+
+(ii) Structure: command option(s) argument(s)
+
+(iii) Without commands, shell wont know what to do
+
+(iv) efficiency vs. understandability
+
+(v) many options start with a dash or minus sign. 
+
+	can even combine options with one dash, 
+
+		with no space in between, order doesn't matter
+
+	other options that have two dashes cannot be combined
+
+----------------------------------------------------------------------------------
+
+* Write commands in a shell at the prompt: 
+
+(i) Spelling counts when working with the command line
+
+(ii) Spacing matters
+
+(iii) Mispellings will cause no damage however
+
+
+----------------------------------------------------------------------------------
+
+* Finding help for commands: 
+
+(i) Don't need to memorize all technical aspects. Some basics help. 
+
+(ii) Using 'man' helps pull up help documentation
+
+(iii) Eg 'man ls' pulls up the technical documentation for ls
+
+(iv) h, f, b, to navigate documentation. cursor tells what line we're at
+
+(v) some commands have the ' --help' option as mini documentation, eg: "ls --help"
+
+(vi) another command is 'help'
+
+(vii) apropos helps search for commands
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

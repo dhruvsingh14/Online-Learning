@@ -1,0 +1,11 @@
+in lesson 2: volatility and risk, 
+
+	I may need to update the risk free rate of return. 
+
+	based on market conditions, and my own preferences as an investor
+
+lessons 4&5 onwards: things to look out for when updating data and modules
+
+	dataset name, related comments, frequency, returns format, 
+
+	columns, dropna etc.

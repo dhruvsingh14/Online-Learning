@@ -1,0 +1,45 @@
+Ch 3: Magic Methods
+
+Magic methods: have double underscores before and after. are built in classes
+
+	string representations. equality testing capabilities
+
+----------------------------------------------------------------------------------
+
+* String methods: 
+
+__str__ : inbuilt method
+
+__repr__ : speaks more to developers. overwrite inbuilt. makes debugging easier. 
+
+----------------------------------------------------------------------------------
+
+* Equality and comparisons:
+
+(i) __eq__ : another inbuilt method
+
+(added equality check behavior to book object)
+
+(ii) there are magic methods that correspond to all logical operators
+
+can add support for this too
+
+(iii) python data model documentation, special names, tells of all the magic methods
+
+							it contains
+
+----------------------------------------------------------------------------------
+
+* Attribute access
+
+(i) __getattribute__, __setattr__
+
+(ii) float(): cast object to float type
+
+----------------------------------------------------------------------------------
+
+* Callable objects: 
+
+(i) makes code more compact and easier to read
+
+

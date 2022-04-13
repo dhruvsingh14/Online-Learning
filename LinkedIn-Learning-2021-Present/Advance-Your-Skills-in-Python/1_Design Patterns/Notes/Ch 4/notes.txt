@@ -1,0 +1,121 @@
+Ch 4: Behavioral Patterns
+
+* Observer: 
+
+(i) Observer Pattern: One to many relationship between a subject and multiple observers
+
+(ii) example: Object needs to be observed. Change must be registered, and notified
+
+(iii) Singleton is related to observer design pattern
+
+-------------------------------------------------------------------------------------
+
+* Observer example:
+
+(i) TempView class creates alert method invoked whenever temperature changes
+
+-------------------------------------------------------------------------------------
+
+* Visitor:
+
+(i) Visitor design pattern allows adding new features to an existing class hierarchy 
+
+		without changing it
+
+(ii) add new operations dynamically to existing classes
+
+(iii) example: adding hvac features to a house
+
+-------------------------------------------------------------------------------------
+
+* Visitor example:
+
+(i) create visitor concrete visitor classes to work on house class
+
+(ii) create methods for visitor classes within house class
+
+(iii) Visitor pattern very versatile, can work on various parts of hierarchy
+
+					and add new features to it
+
+-------------------------------------------------------------------------------------
+
+* Iterator:
+
+(i) Iterator pattern: sequential access to elements of aggregate object, without 
+	
+				exposing underlying structure
+
+(ii) Solution to overcrowding 
+
+(iii) Isolates access
+
+(iv) Tracks object being traversed
+
+(v) Composite design pattern related to iterator design pattern
+
+-------------------------------------------------------------------------------------
+
+* Iterator example:
+
+(i) zip is a built in iterator
+
+(ii) generator: returned by iterator
+
+-------------------------------------------------------------------------------------
+
+* Strategy: 
+
+(i) Strategy pattern: family of interchangeable algorithms to a client
+
+(ii) need for dynamically changing the behavior of an object
+
+-------------------------------------------------------------------------------------
+
+* Strategy example: 
+
+(i) Execute method is the one being replaced dynamically
+
+(ii) python's types module makes it straightforward to implement strategy patterns
+
+-------------------------------------------------------------------------------------
+
+* Chain of Responsibility:
+
+(i) Chain pattern: decouples request and its processing
+
+(ii) concrete handlers check if they can handle the request
+
+(iii) Composite related to chain of responsibility design pattern
+
+-------------------------------------------------------------------------------------
+
+* Chain example: 
+
+(i) point of a handler is to find its successor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,31 @@
+Ch 4: Data Classes
+
+(i) python 3.7 and onwards. write type hints as part of creating a class.
+
+	type hints not enforced.
+
+(ii) benefits: concise. but also implement repr and eq automatically. 
+
+	allow you to skip boiler plate init etc. 
+
+	just like any other classes
+
+----------------------------------------------------------------------------------
+
+* Post initialization:
+
+(i) __post_init__ function: where you can add any additional attributes
+
+			that depend on other attributes when using data classes
+
+----------------------------------------------------------------------------------
+
+* default values: 
+
+(i) field function for defining defaults: can use random number generator to provide
+
+					default values. 
+
+----------------------------------------------------------------------------------
+
+* immutable data types

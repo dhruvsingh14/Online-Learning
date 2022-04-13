@@ -1,0 +1,5 @@
+lesson 7
+
+again the sharpe ratio module/function has an input called the risk free rate of return
+
+	that i'm going to have to know how to control if i want to optimize my returns

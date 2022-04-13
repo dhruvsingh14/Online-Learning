@@ -1,0 +1,132 @@
+Ch 3: Structural Patterns
+
+* Decorator: 
+
+(i) Decorator: allows users to add new features to objects without changing their structures
+
+(ii) Python built in language features makes it easy to do so
+
+(iii) Functions are objects in python
+
+(iv) Can add features to functions using decorators
+
+-------------------------------------------------------------------------------------
+
+* Decorator example:
+
+(i) adding blinker with tags to hello world display
+
+(ii) call decorator just prior to function, in order to tack it on
+
+-------------------------------------------------------------------------------------
+
+* Proxy: 
+
+(i) Postponing object creation as long as possible, unitl absolutely necessary
+
+(ii.1) Producer
+
+(ii.2) Artist
+
+(iii) Clients interact with proxy until resource intensive object becomes available
+
+-------------------------------------------------------------------------------------
+
+* Proxy example:
+
+(i) Goal, not to bother the producer, until the producer is available
+
+(ii) Producer expensive to instantiate
+
+(iii) Proxy, less expensive to instantiate
+
+(iv) if producer not occupied, producer can 'meet guests'
+
+(v) can change state of producer to occupied, and check accordingly
+
+-------------------------------------------------------------------------------------
+
+* Adapter
+
+(i) Converts interface to another one client is expecting
+
+(ii) Translates method names between client and server code.
+
+(iii) Bridges related to adapter pattern
+
+-------------------------------------------------------------------------------------
+
+* Adapter example:
+
+(i) can use to uniform-ize methods 
+
+-------------------------------------------------------------------------------------
+
+* Composite: 
+
+(i) Composite design pattern: maintain tree data structure to maintain part whole relationships
+
+(ii) example: menu>submenu>subsubmenu
+
+(iii.1) Component: abstract class
+
+(iii.2) Child: concrete class, inherits from component class
+
+(iii.3) Composite: concrete class, also inherits from component
+
+		adds and removes child objects from tree data structure
+
+-------------------------------------------------------------------------------------
+
+* Composite example:
+
+(i) component class, implements abstract class
+
+(ii) child class inherits from components class
+
+(iii) defining utility methods under component class
+
+-------------------------------------------------------------------------------------
+
+* Bridge:
+
+(i) Bridge pattern untangles complicated class hierarchy
+
+(ii) Independent vs. dependent circle abstraction
+
+(iii) The abstract factory and adapter patterns related patterns related to bridge design pattern
+
+-------------------------------------------------------------------------------------
+
+* Bridge example:
+
+(i) works when you have so many different kinds of classes involved in your hierarchy
+
+(ii) used to separate these classes into different hierarchies
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

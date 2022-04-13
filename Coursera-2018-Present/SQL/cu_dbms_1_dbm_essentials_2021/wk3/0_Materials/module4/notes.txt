@@ -1,0 +1,8 @@
+X inner join Y
+on X.col = Y.col
+
+let X be the table with col as PK, and Y with col as FK (PK -> FK)
+
+for some tables, col will be PK for both
+
+cross product style, vs join operator style

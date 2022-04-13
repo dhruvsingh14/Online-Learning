@@ -1,0 +1,45 @@
+Ch 2: Record a macro
+
+* recording your first macro
+
+(i) when giving macros a shortcut, be careful not to override existing shortcuts
+
+(ii) saving macro to personal macro workbook will allow you to save macros globally
+
+	for use on any workbook, 
+
+	eg: converting selected data to formatted table with total column
+
+
+-------------------------------------------------------------------------------------
+
+* Assign a macro to a button
+
+(i)  After saving a macro, and possible its inverse, create a shape/image
+
+	then right click, select assign a macro, select macro, then click ok
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

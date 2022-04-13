@@ -1,0 +1,6 @@
+plot title 
+
+Largest Market Cap Firms proportional to HQ country's GDP
+
+x axis: Country
+y axis: USD (billions)

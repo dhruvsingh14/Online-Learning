@@ -1,0 +1,96 @@
+Ch 1: Introduction
+
+* Serialization Overview: 
+
+(i) Serialialization: Taking objects in python and converting it to sequence of bytes
+
+(ii) De-Serialization: Taking a sequence of bytes and converting it to a python object(s) 
+
+(iii) Why? 1 bit = 8 bytes. Conversion good for storage.
+
+(iv) How? json, yaml, pickle, xml and so on
+
+(v) edges of a program, when you are done 
+
+-------------------------------------------------------------------------------------
+
+* Serialization Formats: 
+
+(i) Familiar ones: json and xml
+
+(ii) Language support: critieria for selecting format. json popular for this reason. 
+
+(iii) Data types supported by format: another criteria. eg: json doesn't support datetime
+
+(iv) Schema vs. schemaless formats
+
+(v) Performance requirements
+
+(vi) Most companies use: JSON for external APIs. (and protocol buffers for internal communication)
+
+-------------------------------------------------------------------------------------
+
+* General Serialization Rules:
+
+(i) Design and document your data
+
+(ii) Serialize at the edges
+
+(iii) Security: some formats more secure than other
+
+(iv) Formats: all formats have their own quirks. eg: json does not have a tuple
+
+(v) Decouple: internal data from serialization
+
+-------------------------------------------------------------------------------------
+
+* Formats Overview: 
+
+(i) Pickle: python only, can serialize almost any type. great for python-python communication.
+
+		might use built in eval function for deserialization
+
+(ii) Json: Most popular format for serialization. Text based. Support limited types. 
+
+		Time type is a string. no comments. 
+
+(iii) YAML: wider variety of types than json. can get complex. serialization get slower. 
+
+(iv) TOML: newer player
+
+(v) csv: not cool like json or toml. main advantage is that you can import and export. 
+
+		no schema
+
+(vi) XML: everything is a string as well. pandas can work with xml.
+
+(vii) msgpack, and BSON: binary formats without schema. think of binary-json. 
+
+	bson, used by mongo db. msgpack open format. 
+
+(vii) protocol buffers started at google became veryy popular
+
+			binary format very efficient
+
+(viii) sql: has a schema
+
+(ix) parquet etc.: good for storing alot of data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

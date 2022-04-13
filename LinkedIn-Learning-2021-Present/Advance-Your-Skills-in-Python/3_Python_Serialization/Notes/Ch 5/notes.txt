@@ -1,0 +1,80 @@
+Ch 5: Other Serialization Formats
+
+* msgpack:
+
+(i) Think of it as a binary JSON. It is schemaless, 
+
+	which allows it to iterate more quickly
+
+(ii) Not in the python library
+
+(iii) msgpack relative to json is about 25% smaller in this instance
+
+-------------------------------------------------------------------------------------
+
+* YAML serialization
+
+(i) textual, very readable. has comments, supports a wide variety of types
+
+(ii) use safe variant of load to avoid security issues
+
+(iii) yaml is slow for server to server communication, good for configuration though
+
+-------------------------------------------------------------------------------------
+
+* XML serialization
+
+(i) has been around for a long time
+
+(ii) structured as a tree. all the data are text. 
+
+(iii) may have child nodes
+
+(iv) DOM: document object model, SAX: simple API for XML
+
+(v) de-serialization by parsing the file
+
+(vi) create the root, append the variables, labels, then use to_string 
+
+(vii) name of root element, child elements, and value
+
+(viiii) has schema
+
+(ix) elementree package for working with xml
+
+-------------------------------------------------------------------------------------
+
+* SQL 
+
+(i) Practically invented the notion of schema, has a wide variety of types
+
+(ii) python comes with built in sqlite3 module, android uses it
+
+(iii) sqlite.connect to connect to the database
+
+(iv) commit operation to commit the data to the database
+
+(v) reading is iterative
+
+-------------------------------------------------------------------------------------
+
+* Challenge: ETL from XML to database 
+
+(i) write code in ETL function, need to write database schema as well
+
+-------------------------------------------------------------------------------------
+
+* Solution: ETL from XML to database 
+
+(i) Start by writing schema definition, string -> varchar
+
+
+
+
+
+
+
+
+
+
+

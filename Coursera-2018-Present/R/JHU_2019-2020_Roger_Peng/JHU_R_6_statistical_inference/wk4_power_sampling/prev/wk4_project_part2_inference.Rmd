@@ -1,0 +1,59 @@
+---
+title: "Week 4 Project, Part 2 -- Basic Inference"
+author: "Dhruv Singh"
+date: "February 13, 2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+## PART 0: SETUP
+echo settings for embedding code
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Setting Directory
+```{r dir}
+getwd()
+setwd("C:/Dhruv/misc/data/R_6_statistical_inference/wk4_power_sampling")
+```
+
+
+## PART II: Basic Inference
+
+Step 1: Loading tooth growth package
+```{r packages}
+# install.packages('datasets', repos='http://cran.us.r-project.org')
+library(datasets)
+```
+
+Loading tooth growth data
+```{r datasets}
+data("ToothGrowth")
+str(ToothGrowth)
+```
+
+
+Step 2: Basic Data Summary
+```{r summary}
+summary(ToothGrowth)
+```
+
+Step 3: Confidence intervals
+```{r confint}
+fit <- lm(len ~ dose + supp, ToothGrowth)
+summary(fit)
+```
+
+
+hypothesis testing
+```{r hyp}
+confint(fit, "dose")
+```
+
+
+Step 4: Write-up
+```{r conclusions}
+# with 95 % confidence level, we can say that the dose of tooth growth meds affects tooth length by a factor of 8 to 11 units.
+```

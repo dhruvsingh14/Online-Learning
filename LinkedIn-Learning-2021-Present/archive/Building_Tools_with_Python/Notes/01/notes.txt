@@ -1,0 +1,55 @@
+01: Designing Tools
+
+* Types of tools
+
+(i) Tool: small pieces of software that accomplish a specific task
+
+(ii) Types: graphical tools, utilities, hosted tools etc. 
+
+(iii) Use case: wrap up CLI in a tool
+
+-------------------------------------------------------------------------------------
+
+* Languages and toolkits
+
+(i) Windows too development: batch scripting (not as common anymore), 
+
+								and powershell
+
+(ii) Compiled languages, vs. scripting languages
+
+(iii) Python: good cross-platform tool. Tkinter good for GUI building
+
+(iv) Other: Browser extensions, cloud tools etc. 
+
+-------------------------------------------------------------------------------------
+
+* Planning a tool
+
+(i) identify need, focus scope, write down specific inputs and outputs
+
+(ii) Separate focused tools easier to maintain and troubleshoot
+
+-------------------------------------------------------------------------------------
+
+* Building a tool
+
+(i) Example: Slide counter. Input: Powerpoint. Output: Number of slides. 
+
+-------------------------------------------------------------------------------------
+
+* Challenge: planning a tool
+
+(i) draft: what, language, interface
+
+-------------------------------------------------------------------------------------
+
+* Solution: planning a tool
+
+(i) Task to be accomplished, technologies, end user's experience
+
+
+
+
+
+

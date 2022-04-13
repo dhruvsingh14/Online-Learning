@@ -1,0 +1,60 @@
+Ch 3: JSON Serialization
+
+* Basic JSON serialization:
+
+(i) Suppose you want to automate a pub's purchases
+
+(ii) JSON library has dumps (pronounced dump-s) and loads (pronounced load-s)
+
+	for working with string
+
+(iii) sometime when you want to pass data to a socket, you will need to convert it 
+
+	to bytes
+
+(iv) use indent to make data look pretty
+
+-------------------------------------------------------------------------------------
+
+* Custom types, serialization, JSON
+
+(i) say we want to add time of purchase to order data
+
+(ii) exception, error: because JSON does not have datetime type
+
+(iii) when doing loads with json, get datetime as a str
+
+(iv) fromisformat: python 3.7 and upward
+
+(v) object pairs hook, and object hook, allow you to serialize custom types
+
+(vi) after using the hook, now the data is datetime object
+
+-------------------------------------------------------------------------------------
+
+* Streaming JSON
+
+(i) creating an in memory byte io
+
+(ii) convert it to bytes, since this is what sockets work with
+
+(iii) can stream by writing one object per line
+
+-------------------------------------------------------------------------------------
+
+* Challenge: convert log records to JSON
+
+(i) print the objects in json format, one object per line
+
+-------------------------------------------------------------------------------------
+
+* Solution: convert log records to JSON
+
+(i) There are datetime and IP addresses included in the logs, both custom formats
+
+(ii) Create our own default
+
+(iii) Converts to dictionary
+
+
+

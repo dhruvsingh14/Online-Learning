@@ -1,0 +1,53 @@
+05: Securing Flask
+
+* The challenge of securing Flask
+
+(i) Very powerful framework for creating web applications with python
+
+(ii) Shines through in microservices. Not opinionated. Very bare bones.
+
+(iii) Do I need a user system? Additional packages => increasing the surface of attack
+
+-------------------------------------------------------------------------------------
+
+* Flask secrets
+
+(i) Very flexible. However, you get a lot less out of the box. Up to you. 
+
+(ii) Eg: secret key. You have to generate it. and keep it out of source code & source control 
+
+(iii) Refer to flask documentation for how to generate a secret key
+
+(iv) have to use this in our application
+
+(v) makes sense to break project into modules to reduce complexity
+
+(vi) insert secret key after instantiating flask app
+
+-------------------------------------------------------------------------------------
+
+* Password hashing with Flask
+
+(i) OWASP Top 10, #2 Broken Authentication and #3 Sensitive Data Exposure
+
+(ii) Passwords should never be stored in plain text
+
+(iii) Even if no sensitive information, and shoddy security, 
+
+	if hacked, users' information on this site and potentially others is exposed
+
+(iv) use hashing method when generating password
+
+(v) having passwords hashed makes the consequences of database being reached
+
+								much less dire
+
+
+
+
+
+
+
+
+
+
