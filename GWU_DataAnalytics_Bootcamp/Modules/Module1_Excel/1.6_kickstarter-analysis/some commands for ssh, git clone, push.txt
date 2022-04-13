@@ -1,0 +1,15 @@
+git config --global user.email "email@domain.com"
+
+eval `ssh-agent`
+
+ssh-add id_rsa
+
+git close repo_name
+
+git remote set-url origin git@gw.bootcampcontent.com:GW-Coding-Boot-Camp/GWU-VIRT-DATA-PT-02-2022-U-B.git
+
+(https://gw.bootcampcontent.com/GW-Coding-Boot-Camp/GWU-VIRT-DATA-PT-02-2022-U-B.git)
+
+git remote remove origin
+
+git clone git@gw.bootcampcontent.com:GW-Coding-Boot-Camp/GWU-VIRT-DATA-PT-02-2022-U-B.git
